@@ -8,7 +8,7 @@
     </ResourceDictionary.MergedDictionaries>
 
     <!-- specify the accent color (optional) -->
-    <Color x:Key="AccentColor">Firebrick</Color>
+    <Color x:Key="AccentColor">DodgerBlue</Color>
     <SolidColorBrush x:Key="AccentBrush" Color="{DynamicResource AccentColor}"/>
     
     <!--<SolidColorBrush x:Key="SubMenuTextSelected" Color="{DynamicResource AccentColor}"/>-->
