@@ -1,0 +1,65 @@
+﻿<mui:ModernWindow 
+    x:Class="ReviveThis.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+    xmlns:reviveThis="clr-namespace:ReviveThis"
+    IsTitleVisible="True"
+    AllowsTransparency="True"
+    WindowStyle="None" 
+    Title="ReviveThis.Net" 
+    Height="600" Width="800"
+    ContentSource="/Pages/pgScanSelection.xaml" 
+    WindowStartupLocation="CenterScreen" 
+    ResizeMode="CanResizeWithGrip">
+
+    <!--<mui:ModernWindow.DataContext>
+        <reviveThis:MainWindow/>
+    </mui:ModernWindow.DataContext>-->
+    
+    <!--<mui:ModernWindow.TitleLinks>
+        <mui:LinkCollection >
+            <mui:Link DisplayName="about" Source="/Pages/pgAbout.xaml" />
+        </mui:LinkCollection>
+    </mui:ModernWindow.TitleLinks>-->
+    
+    <mui:ModernWindow.Resources>
+        <!--<Style TargetType="{x:Type mui:ModernMenu}">
+            <Setter Property="SelectedLink" Value="{Binding SelectedLink, Mode=TwoWay}" ></Setter>
+        </Style>-->
+    </mui:ModernWindow.Resources>
+    
+    
+    <mui:ModernWindow.MenuLinkGroups >
+
+        <mui:LinkGroup DisplayName="scan" >
+            <mui:LinkGroup.Links >
+                <mui:Link DisplayName="selection" Source="/Pages/pgScanSelection.xaml" />
+                <mui:Link DisplayName="results" Source="/Pages/pgScanResults.xaml" />
+                <mui:Link DisplayName="analysis" Source="/Pages/pgScan.xaml" />
+                <mui:Link DisplayName="log" Source="/Pages/pgScan.xaml" />
+            </mui:LinkGroup.Links>
+
+        </mui:LinkGroup>
+        <mui:LinkGroup DisplayName="tools" >
+            <mui:LinkGroup.Links>
+
+            </mui:LinkGroup.Links>
+        </mui:LinkGroup>
+        <mui:LinkGroup DisplayName="settings" >
+            <mui:LinkGroup.Links>
+                <mui:Link DisplayName="add-in's" Source="/Pages/pgAddInManager.xaml" />
+                <mui:Link DisplayName="about" Source="/Content/AboutSelectionList.xaml" />
+            </mui:LinkGroup.Links>
+        </mui:LinkGroup>
+    </mui:ModernWindow.MenuLinkGroups>
+
+    <!-- ensures new LoremIpsum content is loaded for each uri -->
+    <mui:ModernWindow.ContentLoader>
+        <reviveThis:ReviveThisContentLoader />
+    </mui:ModernWindow.ContentLoader>
+
+    <!--<mui:ModernWindow.LinkNavigator>
+        <reviveThis:ReviveThisLinkNavigator />
+    </mui:ModernWindow.LinkNavigator>-->
+</mui:ModernWindow>

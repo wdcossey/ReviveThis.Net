@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3CFA3700-DA4A-47C1-A4A4-BD0070FAF022}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ReviveThis.AddIn.AutoRun</RootNamespace>
+    <AssemblyName>ReviveThis.Net.AddIn.AutoRun</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Build\Debug\AddIns\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\Build\Release\AddIns\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppInit\AppInit.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AppInit\Entities\AppInitResult.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AppInit\Enums\AppInitResultType.cs" />
+    <Compile Include="AppInit\Interfaces\IAppInitResult.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AutoRun\Entities\AutoRunStartUpResult.cs" />
+    <Compile Include="AutoRun\Entities\AutoRunRegistryResult.cs" />
+    <Compile Include="AutoRun\Enums\AutoRunResultType.cs" />
+    <Compile Include="AutoRun\Interfaces\IAutoRunResult.cs" />
+    <Compile Include="AutoRun\Interfaces\IAutoRunStartUpResult.cs" />
+    <Compile Include="AutoRun\Interfaces\IAutoRunRegistryResult.cs" />
+    <Compile Include="AutoRun\StartUp.cs" />
+    <Compile Include="AutoRun\RegistryRun.cs" />
+    <Compile Include="Consts\General.cs" />
+    <Compile Include="WinlogonNotify\Entities\WinlogonNotifyResult.cs" />
+    <Compile Include="WinlogonNotify\Interfaces\IWinlogonNotifyResult.cs" />
+    <Compile Include="WinlogonNotify\WinlogonNotify.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AppInit\Consts\" />
+    <Folder Include="AutoRun\Consts\" />
+    <Folder Include="WinlogonNotify\Enums\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\ReviveThis.Net.Common\ReviveThis.Net.Common.csproj">
+      <Project>{fc198160-6a8c-49ba-a655-c5a43950db45}</Project>
+      <Name>ReviveThis.Net.Common</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

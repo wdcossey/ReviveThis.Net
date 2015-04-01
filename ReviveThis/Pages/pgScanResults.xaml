@@ -1,0 +1,84 @@
+﻿<UserControl x:Class="ReviveThis.Pages.ScanResultsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:viewModels="clr-namespace:ReviveThis.ViewModels"
+      mc:Ignorable="d" 
+      d:DesignHeight="480" d:DesignWidth="640">
+
+    <UserControl.DataContext>
+        <viewModels:ScanResultsViewModel/>
+    </UserControl.DataContext>
+
+    <Border Style="{StaticResource ContentRoot}" BorderBrush="{StaticResource ItemBorder}" BorderThickness="1">
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ListView 
+                x:Name="ResultsListView" 
+                Grid.Row="0" 
+                VerticalAlignment="Stretch"  
+                HorizontalAlignment="Stretch" 
+                
+                ItemsSource="{Binding Items}" 
+                SelectedItem="{Binding SelectedItem, Mode=TwoWay}" >
+                
+                <ListView.View>
+                    <GridView AllowsColumnReorder="False">
+                        <GridView.ColumnHeaderContainerStyle>
+                            <Style>
+                                <Setter Property="FrameworkElement.Visibility" Value="Collapsed"/>
+                            </Style>
+                        </GridView.ColumnHeaderContainerStyle>
+                        <GridViewColumn>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox IsEnabled="{Binding CanRepair, Mode=OneWay}" IsChecked="{Binding CanRepair, Mode=OneWay}" Tag="{Binding}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Results" Width="Auto" DisplayMemberBinding="{Binding LegacyString, Mode=OneWay}"/>
+                        <!--<GridViewColumn Header="" Width="Auto" DisplayMemberBinding="{Binding Version, Mode=OneWay}"/>
+                        <GridViewColumn Header="Information" Width="Auto" DisplayMemberBinding="{Binding Author, Mode=OneWay}"/>-->
+                    </GridView>
+                </ListView.View>
+
+                <!--<ListView.ContextMenu  >
+                    <ContextMenu HasDropShadow="True" ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListView}, Converter={StaticResource ContextMenuConverter}}" >
+
+                    </ContextMenu>
+                </ListView.ContextMenu>-->
+
+                
+                <ListView.Resources>
+
+                    <ContextMenu
+                        x:Key="ResultContextMenu" 
+                        HasDropShadow="True"
+                        ItemsSource="{Binding Converter={StaticResource ContextMenuConverter}}"
+                        />
+                    
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="ToolTip" Value="{Binding Converter={StaticResource ScanResultToolTipConverter}}"></Setter>
+                        <Setter Property="ContextMenu" Value="{StaticResource ResultContextMenu}"/>
+                        <!--<Setter Property="ContextMenu.Placement" Value="MousePoint"/>
+                        <Setter Property="ContextMenu.HasDropShadow" Value="True"/>-->
+                    </Style>
+                    
+                </ListView.Resources>
+                
+                <ListView.GroupStyle>
+                    <GroupStyle>
+                        <GroupStyle.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock FontWeight="Normal" Padding="8,0,0,0" FontSize="14" Text="{Binding Name}" Foreground="{DynamicResource AccentBrush}"/>
+                            </DataTemplate>
+                        </GroupStyle.HeaderTemplate>
+                    </GroupStyle>
+                </ListView.GroupStyle>
+            </ListView>
+        </Grid>
+    </Border>
+</UserControl>

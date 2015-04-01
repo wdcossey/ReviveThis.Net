@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="ReviveThis.Content.AboutSelectionList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             xmlns:contentLoaders="clr-namespace:ReviveThis.ContentLoaders"
+             mc:Ignorable="d" 
+             d:DesignHeight="480" d:DesignWidth="640">
+
+    <!--<UserControl.DataContext>
+        <viewModels: />
+    </UserControl.DataContext>-->
+
+
+    <Grid Style="{StaticResource ContentRoot}">
+        <mui:ModernTab SelectedSource="/Content/AboutMeContent.xaml" Layout="List">
+            <mui:ModernTab.Resources>
+                
+            </mui:ModernTab.Resources>
+            
+            <mui:ModernTab.Links>
+                <mui:Link DisplayName="ReviveThis.Net" Source="/Content/AboutMeContent.xaml" />
+                <mui:Link DisplayName="HiJackThis" Source="/Content/AboutHiJackThis.xaml" />
+                <!--<mui:Link DisplayName="Lorem Ipsum 2" Source="/2" />
+                <mui:Link DisplayName="Lorem Ipsum 3" Source="/3"/>
+                <mui:Link DisplayName="Lorem Ipsum 4" Source="/4" />
+                <mui:Link DisplayName="Lorem Ipsum 5" Source="/5"/>-->
+            </mui:ModernTab.Links>
+
+            <mui:ModernTab.ContentLoader>
+                <contentLoaders:AboutContentLoader />
+            </mui:ModernTab.ContentLoader>
+        </mui:ModernTab>
+    </Grid>
+</UserControl>

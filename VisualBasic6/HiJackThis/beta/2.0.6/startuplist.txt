@@ -1,0 +1,154 @@
+StartupList report, 2015-03-25, 12:06:36 AM
+StartupList version: 1.52.2
+Started from : D:\Users\wdcossey\Documents\SourceTree\Mecurial\hijackthis.net\VisualBasic6\HiJackThis\beta\2.0.6\HijackThis.EXE
+Detected: Windows XP SP2 (Windows 5.1.2600)
+Detected: Internet Explorer v11.0 (11.00.9600.17416)
+* Using default options
+==================================================
+
+Running processes:
+
+C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+C:\Program Files (x86)\Internet Download Manager\IDMan.exe
+C:\Users\wdcossey\AppData\Roaming\Dropbox\bin\Dropbox.exe
+D:\Program Files (x86)\VMWare\VMWare Workstation\vmware-tray.exe
+C:\Program Files (x86)\Internet Download Manager\IEMonitor.exe
+D:\Program Files (x86)\1Password 4\Agile1pAgent.exe
+C:\Program Files\Microsoft Office 15\Root\VFS\ProgramFilesCommonX86\Microsoft Shared\OFFICE15\CSISYNCCLIENT.EXE
+C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+C:\Users\wdcossey\AppData\Local\GitHub\PortableGit_c2ba306e536fdf878271f7fe636a147ff37326ad\bin\ssh-agent.exe
+C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+D:\Program Files (x86)\Origin\Origin.exe
+C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+C:\Windows\SysWOW64\NOTEPAD.EXE
+C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+D:\Program Files (x86)\1Password 4\1Password.exe
+D:\Users\wdcossey\Downloads\Portable.VB6\Vb6.exe
+
+--------------------------------------------------
+
+Listing of startup folders:
+
+Shell folders Startup:
+[C:\Users\wdcossey\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup]
+Dropbox.lnk = wdcossey\AppData\Roaming\Dropbox\bin\Dropbox.exe
+
+--------------------------------------------------
+
+Checking Windows NT UserInit:
+
+[HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon]
+UserInit = userinit.exe
+
+--------------------------------------------------
+
+Autorun entries from Registry:
+HKLM\Software\Microsoft\Windows\CurrentVersion\Run
+
+vmware-tray.exe = "D:\Program Files (x86)\VMWare\VMWare Workstation\vmware-tray.exe"
+SunJavaUpdateSched = "C:\Program Files (x86)\Common Files\Java\Java Update\jusched.exe"
+Live Update = D:\Program Files (x86)\MSI\Live Update\Live Update.exe /REMINDER
+StartCCC = "C:\Program Files (x86)\AMD\ATI.ACE\Core-Static\amd64\CLIStart.exe" MSRun
+LogMeIn Hamachi Ui = "D:\Program Files (x86)\LogMeIn Hamachi\hamachi-2-ui.exe" --auto-start
+Agile1pAgent = D:\Program Files (x86)\1Password 4\Agile1pAgent.exe
+
+--------------------------------------------------
+
+Autorun entries from Registry:
+HKCU\Software\Microsoft\Windows\CurrentVersion\Run
+
+IDMan = C:\Program Files (x86)\Internet Download Manager\IDMan.exe /onboot
+Plex Media Server = "C:\Program Files (x86)\Plex\Plex Media Server\Plex Media Server.exe"
+
+--------------------------------------------------
+
+File association entry for .HTA:
+HKEY_CLASSES_ROOT\htafile\shell\open\command
+
+(Default) = C:\Windows\SysWOW64\mshta.exe "%1" {1E460BD7-F1C3-4B2E-88BF-4E770A288AF5}%U{1E460BD7-F1C3-4B2E-88BF-4E770A288AF5} %*
+
+--------------------------------------------------
+
+Shell & screensaver key from C:\Windows\SYSTEM.INI:
+
+Shell=*INI section not found*
+SCRNSAVE.EXE=*INI section not found*
+drivers=*INI section not found*
+
+Shell & screensaver key from Registry:
+
+Shell=explorer.exe
+SCRNSAVE.EXE=C:\Windows\system32\scrnsave.scr
+drivers=*Registry value not found*
+
+Policies Shell key:
+
+HKCU\..\Policies: Shell=*Registry key not found*
+HKLM\..\Policies: Shell=*Registry value not found*
+
+--------------------------------------------------
+
+
+Enumerating Browser Helper Objects:
+
+IDM Helper - C:\Program Files (x86)\Internet Download Manager\IDMIECC.dll - {0055C089-8582-441B-A0BF-17B458C2A3A8}
+(no name) - D:\Program Files (x86)\1Password 4\x86\Agile1pIE4.dll - {037C06D5-3893-49E8-9AC0-41F7524AFBF5}
+(no name) - C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\PrivateAssemblies\Microsoft.VisualStudio.QualityTools.RecorderBarBHO100.dll - {432dd630-7e03-4c97-9d62-b99f52df4fc2}
+(no name) - C:\Program Files (x86)\Java\jre7\bin\ssv.dll - {761497BB-D6F0-462C-B6EB-D4DAF1D92D43}
+(no name) - C:\Program Files (x86)\Java\jre7\bin\jp2ssv.dll - {DBC80044-A445-435b-BC74-9C25C1C588A9}
+
+--------------------------------------------------
+
+Enumerating Task Scheduler jobs:
+
+GoogleUpdateTaskMachineCore.job
+GoogleUpdateTaskMachineUA.job
+
+--------------------------------------------------
+
+Enumerating Winsock LSP files:
+
+NameSpace #1: C:\Windows\system32\napinsp.dll
+NameSpace #2: C:\Windows\system32\pnrpnsp.dll
+NameSpace #3: C:\Windows\system32\pnrpnsp.dll
+NameSpace #4: C:\Windows\system32\NLAapi.dll
+NameSpace #7: C:\Program Files (x86)\Bonjour\mdnsNSP.dll
+Protocol #11: %windir%\system32\vsocklib.dll (file MISSING)
+Protocol #12: %windir%\system32\vsocklib.dll (file MISSING)
+
+--------------------------------------------------
+
+Enumerating ShellServiceObjectDelayLoad items:
+
+WebCheck: *Registry key not found*
+
+--------------------------------------------------
+End of report, 6 866 bytes
+Report generated in 0.015 seconds
+
+Command line options:
+   /verbose  - to add additional info on each section
+   /complete - to include empty sections and unsuspicious data
+   /full     - to include several rarely-important sections
+   /force9x  - to include Win9x-only startups even if running on WinNT
+   /forcent  - to include WinNT-only startups even if running on Win9x
+   /forceall - to include all Win9x and WinNT startups, regardless of platform
+   /history  - to list version history only

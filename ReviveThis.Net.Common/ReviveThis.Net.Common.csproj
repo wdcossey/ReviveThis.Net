@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FC198160-6A8C-49BA-A655-C5A43950DB45}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ReviveThis</RootNamespace>
+    <AssemblyName>ReviveThis.Net.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>ce19b892</NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Consts\IniFileValues.cs" />
+    <Compile Include="Consts\RegistryValues.cs" />
+    <Compile Include="Consts\SafeAppInits.cs" />
+    <Compile Include="Consts\SafeDomains.cs" />
+    <Compile Include="Consts\SafeFilters.cs" />
+    <Compile Include="Consts\SafeProtocols.cs" />
+    <Compile Include="Consts\SafeSsodl.cs" />
+    <Compile Include="Entities\AddInBootStrapper.cs" />
+    <Compile Include="Entities\Attributes\ScanResultTypeAttribute.cs" />
+    <Compile Include="Entities\Collections\UninstallItemCollection.cs" />
+    <Compile Include="Entities\ExtensionMethods\ContextMenuBuilder.cs" />
+    <Compile Include="Entities\ExtensionMethods\FileAttributesExtesionMethods.cs" />
+    <Compile Include="Entities\ExtensionMethods\FileVersionInfoExtensionMethods.cs" />
+    <Compile Include="Entities\ExtensionMethods\OperatingSystemExtensionMethods.cs" />
+    <Compile Include="Entities\ExtensionMethods\RegistryViewExtentionMethods.cs" />
+    <Compile Include="Entities\ExtensionMethods\ScanResultTypeExtensionMethods.cs" />
+    <Compile Include="Entities\ExtensionMethods\StringExtensionMethods.cs" />
+    <Compile Include="Entities\ExtensionMethods\VersionExtensionMethods.cs" />
+    <Compile Include="Entities\ReviveThisSettings.cs" />
+    <Compile Include="Entities\ReviveThisApplication.cs" />
+    <Compile Include="Entities\HostsFileResult.cs" />
+    <Compile Include="Entities\IniFile.cs" />
+    <Compile Include="Entities\Modules\Encrypt.cs" />
+    <Compile Include="Entities\Modules\Hosts.cs" />
+    <Compile Include="Entities\Modules\Internet.cs" />
+    <Compile Include="Entities\Modules\OsInfo.cs" />
+    <Compile Include="Entities\Modules\ProcessManager.cs" />
+    <Compile Include="Entities\Modules\Services.cs" />
+    <Compile Include="Entities\Modules\Uninstall.cs" />
+    <Compile Include="Entities\Modules\Utils.cs" />
+    <Compile Include="Entities\PInvoke\Advapi32.cs" />
+    <Compile Include="Entities\PInvoke\Kernel32.cs" />
+    <Compile Include="Entities\PInvoke\NativeMethods.cs" />
+    <Compile Include="Entities\PInvoke\Privilege.cs" />
+    <Compile Include="Entities\PInvoke\SafeTokenHandle.cs" />
+    <Compile Include="Entities\PInvoke\Shell32.cs" />
+    <Compile Include="Entities\PInvoke\Shfolder.cs" />
+    <Compile Include="Entities\PInvoke\StringLoader.cs" />
+    <Compile Include="Entities\PInvoke\User32.cs" />
+    <Compile Include="Entities\IniResultItem.cs" />
+    <Compile Include="Entities\RegistryResultItem.cs" />
+    <Compile Include="Entities\RegistryParser.cs" />
+    <Compile Include="Entities\ScanItemContextMenu.cs" />
+    <Compile Include="Enums\RepairResultType.cs" />
+    <Compile Include="Enums\AnalyseResultType.cs" />
+    <Compile Include="Helpers\Elevation.cs" />
+    <Compile Include="Helpers\MultipartFormData.cs" />
+    <Compile Include="Interfaces\IAddInBase.cs" />
+    <Compile Include="Interfaces\IAnalysisAddIn.cs" />
+    <Compile Include="Interfaces\ICustomAddInSection.cs" />
+    <Compile Include="Interfaces\IDetectionItemToolTip.cs" />
+    <Compile Include="Interfaces\IDetectionItemContextMenu.cs" />
+    <Compile Include="Interfaces\IDetectionItemContextMenuCollection.cs" />
+    <Compile Include="Interfaces\IDetectionRepair.cs" />
+    <Compile Include="Interfaces\IDetectionRepairResult.cs" />
+    <Compile Include="Interfaces\ISortableAddIn.cs" />
+    <Compile Include="Structs\AnalyseResult.cs" />
+    <Compile Include="Structs\CustomAddInSection.cs" />
+    <Compile Include="Interfaces\IAnalysisResult.cs" />
+    <Compile Include="Structs\RegistryInformation.cs" />
+    <Compile Include="Entities\ServiceInformation.cs" />
+    <Compile Include="Entities\UninstallItem.cs" />
+    <Compile Include="Enums\HostsFileType.cs" />
+    <Compile Include="Enums\IniScanMode.cs" />
+    <Compile Include="Enums\RegistryScanMode.cs" />
+    <Compile Include="Enums\ScanResultType.cs" />
+    <Compile Include="Interfaces\IEncryptedList.cs" />
+    <Compile Include="Interfaces\IModule.cs" />
+    <Compile Include="Interfaces\IIniResultItem.cs" />
+    <Compile Include="Interfaces\IModuleInformation.cs" />
+    <Compile Include="Interfaces\IRegistryResultItem.cs" />
+    <Compile Include="Interfaces\IDetectionAddIn.cs" />
+    <Compile Include="Interfaces\IDetectionResultItem.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

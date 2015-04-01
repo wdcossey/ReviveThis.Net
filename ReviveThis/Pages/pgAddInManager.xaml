@@ -1,0 +1,101 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:viewModels="clr-namespace:ReviveThis.ViewModels"
+    xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+    x:Name="AddInPage" 
+    x:Class="ReviveThis.Pages.AddInManagerPage"
+    mc:Ignorable="d" 
+    d:DesignHeight="480" d:DesignWidth="640"
+	Title="Add-In Manager">
+    
+    <Page.DataContext>
+        <viewModels:AddInViewModel/>
+    </Page.DataContext>
+
+    <Border Style="{StaticResource ContentRoot}" BorderBrush="{StaticResource ItemBorder}" BorderThickness="1">
+        <Grid  >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition MaxHeight="160" />
+            </Grid.RowDefinitions>
+            <ListView 
+                x:Name="AddInListView" 
+                Grid.Row="0" 
+                VerticalAlignment="Stretch"  
+                HorizontalAlignment="Stretch" 
+                ItemsSource="{Binding Items}" 
+                SelectedItem="{Binding SelectedItem, Mode=TwoWay}" >
+                <ListView.View>
+                    <GridView AllowsColumnReorder="False">
+                        <GridViewColumn>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox IsChecked="True" IsEnabled="False" Tag="{Binding}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Name" Width="Auto" DisplayMemberBinding="{Binding Name, Mode=OneWay}"/>
+                        <GridViewColumn Header="Version" Width="Auto" DisplayMemberBinding="{Binding Version, Mode=OneWay}"/>
+                        <GridViewColumn Header="Author" Width="Auto" DisplayMemberBinding="{Binding Author, Mode=OneWay}"/>
+
+                        <!--<GridView.ColumnHeaderToolTip>
+                            <ToolTip>
+                                <StackPanel>
+                                    <TextBlock FontWeight="Bold">Submit Request</TextBlock>
+                                    <TextBlock>Submits the request to the server.</TextBlock>
+                                </StackPanel>
+                            </ToolTip>
+                        </GridView.ColumnHeaderToolTip>-->
+                        
+                    </GridView>
+
+                </ListView.View>
+
+                <!--<ListView.Resources>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="ToolTip" Value="{Binding Description, Converter={StaticResource StringToHtmlConverter} }"></Setter>
+                    </Style>
+                </ListView.Resources>-->
+                
+                <ListView.GroupStyle>
+                    <GroupStyle>
+                        <GroupStyle.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock FontWeight="Normal" Padding="8,0,0,0" FontSize="14" Text="{Binding Name}" Foreground="{StaticResource AccentBrush}"/>
+                            </DataTemplate>
+                        </GroupStyle.HeaderTemplate>
+                    </GroupStyle>
+                </ListView.GroupStyle>
+
+                <!--<ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical">
+                                <Label>Name</Label>
+                                <TextBlock Text="{Binding Name}"/>
+                                <Label>Modified</Label>
+                                <TextBlock Text="{Binding Author}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>-->
+            </ListView>
+            <GridSplitter Grid.Row="1" Height="1"></GridSplitter>
+            <ScrollViewer
+                Grid.Row="2" 
+                VerticalScrollBarVisibility="Auto"
+                HorizontalScrollBarVisibility="Disabled">
+                <mui:BBCodeBlock 
+                    Padding="4"
+                    TextWrapping="Wrap" 
+                    Width="Auto"
+                    Height="Auto"
+                    
+                    BBCode="{Binding SelectedItem.Description, ElementName=AddInListView, Converter={StaticResource StringToHtmlConverter}}">
+                </mui:BBCodeBlock>
+            </ScrollViewer>
+        </Grid>
+    </Border>
+</Page>

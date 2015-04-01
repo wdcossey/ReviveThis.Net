@@ -1,0 +1,34 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:mui="http://firstfloorsoftware.com/ModernUI">
+
+    <!-- derive from Light or Dark theme-->
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/modernui.dark.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!-- specify the accent color (optional) -->
+    <Color x:Key="AccentColor">Firebrick</Color>
+    <SolidColorBrush x:Key="AccentBrush" Color="{DynamicResource AccentColor}"/>
+    
+    <!--<SolidColorBrush x:Key="SubMenuTextSelected" Color="{DynamicResource AccentColor}"/>-->
+    
+    <!--<LinearGradientBrush x:Key="SeparatorBackground">
+        <GradientStopCollection>
+            <GradientStop Color="#00B22222"></GradientStop>
+            <GradientStop Offset="0.5" Color="{DynamicResource AccentColor}"></GradientStop>
+            <GradientStop Offset="1" Color="#00B22222"></GradientStop>
+        </GradientStopCollection>
+    </LinearGradientBrush>-->
+
+    <!--<Rectangle x:Key="WindowBackgroundContent">
+        <Rectangle.Fill>
+            <LinearGradientBrush StartPoint="0,0" Opacity="0.25">
+                <GradientStop Color="{StaticResource AccentColor}" Offset="1"></GradientStop>
+                <GradientStop Color="{StaticResource WindowBackgroundColor}" Offset="0"></GradientStop>
+            </LinearGradientBrush>
+        </Rectangle.Fill>
+    </Rectangle>-->
+    
+
+</ResourceDictionary>

@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="ReviveThis.Pages.ScanTabs"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             mc:Ignorable="d" 
+             d:DesignHeight="480" d:DesignWidth="640">
+    <Grid Style="{StaticResource ContentRoot}">
+        <mui:ModernTab SelectedSource="/Pages/pgScanSelection.xaml" Layout="Tab">
+            <mui:ModernTab.Links>
+                <mui:Link DisplayName="selection" Source="/Pages/pgScanSelection.xaml" />
+                <mui:Link DisplayName="results" Source="/Pages/pgScanResults.xaml" />
+                <mui:Link DisplayName="analysis" Source="/Pages/pgScan.xaml" />
+                <mui:Link DisplayName="log" Source="/Pages/pgScan.xaml" />
+                
+                <!--<mui:Link DisplayName="Basic" Source="/Content/LoremIpsum.xaml" />
+                <mui:Link DisplayName="Split" Source="/Content/LoremIpsumSplit.xaml" />
+                <mui:Link DisplayName="List" Source="/Content/LoremIpsumList.xaml" />-->
+            </mui:ModernTab.Links>
+        </mui:ModernTab>
+    </Grid>
+</UserControl>

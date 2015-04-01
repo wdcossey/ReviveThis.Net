@@ -1,0 +1,343 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel.Composition;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.Win32;
+using ReviveThis.AddIn.AutoRun.WinlogonNotify.Entities;
+using ReviveThis.Entities;
+using ReviveThis.Enums;
+using ReviveThis.Interfaces;
+using ReviveThis.AddIn.AutoRun.Consts;
+
+namespace ReviveThis.AddIn.AutoRun.WinlogonNotify
+{
+
+  #region [20] CheckOther20Item
+
+  [Export(typeof (IDetectionAddIn))]
+  public class WinlogonNotify : IDetectionAddIn
+  {
+
+    #region private
+    #region consts
+    //
+    private const string COMMON_REG_LOCATION = @"Software\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify";
+    #endregion
+
+    #region Winlogon\Notify Registry Parsers
+    private static RegistryParser[] _winlogonRegistryParsers;
+
+    private static IEnumerable<RegistryParser> WinlogonRegistryParsers
+    {
+      get
+      {
+        if (_winlogonRegistryParsers != null && _winlogonRegistryParsers.Any())
+          return _winlogonRegistryParsers;
+
+        return _winlogonRegistryParsers = new[]
+        {
+          #region LocalMachine
+          new RegistryParser(RegistryHive.LocalMachine, COMMON_REG_LOCATION,
+            new[] { RegistryView.Registry32, RegistryView.Registry64 }),
+          #endregion
+
+          #region CurrentUser
+          new RegistryParser(RegistryHive.CurrentUser, COMMON_REG_LOCATION,
+            new[] { RegistryView.Default })
+          #endregion
+        };
+      }
+    }
+    #endregion
+
+    #region Winlogon\Notify Safe List
+    private static string[] _safeWinlogonNotifies;
+
+    private static IEnumerable<string> SafeWinlogonNotifies
+    {
+      get
+      {
+        if (_safeWinlogonNotifies != null && _safeWinlogonNotifies.Any())
+          return _safeWinlogonNotifies;
+
+        return _safeWinlogonNotifies = new[]
+        {
+          "crypt32chain",
+          "cryptnet",
+          "cscdll",
+          "ScCertProp",
+          "Schedule",
+          "SensLogn",
+          "termsrv",
+          "wlballoon",
+          "igfxcui",
+          "AtiExtEvent",
+          "wzcnotif",
+
+          //added in HJT 1.99.2 final
+          "ActiveSync",
+          "atmgrtok",
+          "avldr",
+          "Caveo",
+          "ckpNotify",
+          "Command AntiVirus Download",
+          "ComPlusSetup",
+          "CwWLEvent",
+          "dimsntfy",
+          "DPWLN",
+          "EFS",
+          "FolderGuard",
+          "GoToMyPC",
+          "IfxWlxEN",
+          "igfxcui",
+          "IntelWireless",
+          "klogon",
+          "LBTServ",
+          "LBTWlgn",
+          "LMIinit",
+          "loginkey",
+          "MCPClient",
+          "MetaFrame",
+          "NavLogon",
+          "NetIdentity Notification",
+          "nwprovau",
+          "OdysseyClient",
+          "OPXPGina",
+          "PCANotify",
+          "pcsinst",
+          "PFW",
+          "PixVue",
+          "ppeclt",
+          "PRISMAPI.DLL",
+          "PRISMGNA.DLL",
+          "psfus",
+          "QConGina",
+          "RAinit",
+          "RegCompact",
+          "SABWinLogon",
+          "SDNotify",
+          "Sebring",
+          "STOPzilla",
+          "sunotify",
+          "SymcEventMonitors",
+          "T3Notify",
+          "TabBtnWL",
+          "Timbuktu Pro",
+          "tpfnf2",
+          "tpgwlnotify",
+          "tphotkey",
+          "VESWinlogon",
+          "WB",
+          "WBSrv",
+          "WgaLogon",
+          "wintask",
+          "WLogon",
+          "WRNotifier",
+          "Zboard",
+          "zsnotify",
+          "sclgntfy"
+        };
+      }
+    }
+
+    #endregion
+
+    private static string FindSystemFile(string fileName)
+    {
+      if (!fileName.StartsWith(@"\") && File.Exists(fileName))
+        return fileName;
+
+      var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), fileName);
+      if (File.Exists(path))
+        return path;
+
+      path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), fileName);
+      if (File.Exists(path))
+        return path;
+
+      if (!Environment.Is64BitProcess)
+        return fileName;
+
+      path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.SystemX86), fileName);
+      return File.Exists(path) ? path : fileName;
+    }
+
+    #endregion
+
+    public string Author
+    {
+      get { return General.Author; }
+    }
+
+    private Version _version;
+
+    public Version Version
+    {
+      get
+      {
+        if (_version != null)
+          return _version;
+
+        return _version = new Version(1, 0, 0, 0);
+      }
+    }
+
+    public string Name
+    {
+      get { return @"Winlogon Notification Packages"; }
+    }
+
+    public string[] Description
+    {
+      get { return new[]
+      {
+        @"Winlogon notification packages are .dll's that receive and handle events generated by Winlogon.",
+        @"Applications use this to perform additional processing during logon and\or logoff.",
+        string.Empty,
+        @"In Windows® Vista and later, Winlogon notification packages are no longer supported.",
+        @"http://en.wikipedia.org/wiki/List_of_features_removed_in_Windows_Vista#User_accounts_and_Winlogon"
+      };}
+    }
+
+    public void Dispose()
+    {
+      //Nothing to dispose?
+    }
+
+    public async Task<ICollection<IDetectionResultItem>> Scan()
+    {
+      //await Task.FromResult(0);
+      
+      var result = new Collection<IDetectionResultItem>();
+
+      foreach (var item in WinlogonRegistryParsers)
+      {
+        foreach (var view in item.RegistryViews)
+        {
+          using (var regKey = RegistryKey.OpenBaseKey(item.RegistryHive, view).OpenSubKey(item.SubKey, false))
+          {
+            if (regKey == null || regKey.SubKeyCount <= 0)
+              continue;
+
+            var subKeyNames = regKey.GetSubKeyNames();
+
+            foreach (var subKeyName in subKeyNames.Where(w =>
+#if DEBUG
+              true
+#else
+              !SafeWinlogonNotifies.Contains(w)
+#endif
+              ))
+            {
+              using (var subKey = regKey.OpenSubKey(subKeyName, false))
+              {
+                if (subKey == null)
+                  continue;
+
+                var sFile = subKey.GetValue("DllName", null) as string;
+                var fileExists = false;
+                var invalidRegistry = false;
+
+                if (string.IsNullOrEmpty(sFile))
+                {
+                  invalidRegistry = true;
+                  sFile = null;
+                }
+                else
+                {
+                  sFile = Environment.ExpandEnvironmentVariables(FindSystemFile(sFile));
+                  fileExists = File.Exists(sFile);
+                }
+
+                //TODO: Implement Ignore List
+                result.Add(new WinlogonNotifyResult(item.RegistryHive, subKey.View, subKey.Name, subKeyName, sFile, fileExists, invalidRegistry));
+              }
+            }
+          }
+        }
+      }
+
+      return result;
+    }
+
+    public ScanResultType ResultType
+    {
+      get { return ScanResultType.WinlogonNotify; }
+    }
+  }
+
+  #endregion
+
+  #region Original Visual Basic (6.0) Code Block
+
+  /*
+    second line added in HJT 1.99.2 final
+    sSafeWinlogonNotify = "crypt32chain*cryptnet*cscdll*ScCertProp*Schedule*SensLogn*termsrv*wlballoon*igfxcui*AtiExtEvent*wzcnotif*" & _
+                          "ActiveSync*atmgrtok*avldr*Caveo*ckpNotify*Command AntiVirus Download*ComPlusSetup*CwWLEvent*dimsntfy*DPWLN*EFS*FolderGuard*GoToMyPC*IfxWlxEN*igfxcui*IntelWireless*klogon*LBTServ*LBTWlgn*LMIinit*loginkey*MCPClient*MetaFrame*NavLogon*NetIdentity Notification*nwprovau*OdysseyClient*OPXPGina*PCANotify*pcsinst*PFW*PixVue*ppeclt*PRISMAPI.DLL*PRISMGNA.DLL*psfus*QConGina*RAinit*RegCompact*SABWinLogon*SDNotify*Sebring*STOPzilla*sunotify*SymcEventMonitors*T3Notify*TabBtnWL*Timbuktu Pro*tpfnf2*tpgwlnotify*tphotkey*VESWinlogon*WB*WBSrv*WgaLogon*wintask*WLogon*WRNotifier*Zboard*zsnotify*sclgntfy"
+  */
+
+  /*
+    Public Sub CheckOther20Item()
+        'appinit_dlls + winlogon notify
+        Dim sAppInit$, sFile$, sHit$
+        sAppInit = "Software\Microsoft\Windows NT\CurrentVersion\Windows"
+        sFile = RegGetString(HKEY_LOCAL_MACHINE, sAppInit, "AppInit_DLLs")
+        If sFile <> vbNullString Then
+            sFile = Replace(sFile, Chr(0), "|")
+            If InStr(1, sSafeAppInit, sFile, vbTextCompare) = 0 Or _
+               bIgnoreAllWhitelists Then
+                'item is not on whitelist
+                sHit = "O20 - AppInit_DLLs: " & sFile
+            
+                If bIgnoreAllWhitelists = True Then
+                    frmMain.lstResults.AddItem sHit
+                ElseIf Not IsOnIgnoreList(sHit) Then
+                     frmMain.lstResults.AddItem sHit
+                End If
+            End If
+        End If
+    
+        Dim sSubKeys$(), i&, sWinlogon$, ss$
+        sWinlogon = "Software\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify"
+        sSubKeys = Split(RegEnumSubkeys(HKEY_LOCAL_MACHINE, sWinlogon), "|")
+        If UBound(sSubKeys) <> -1 Then
+            For i = 0 To UBound(sSubKeys)
+                If InStr(1, "*" & sSafeWinlogonNotify & "*", "*" & sSubKeys(i) & "*", vbTextCompare) = 0 Then
+                    sFile = RegGetString(HKEY_LOCAL_MACHINE, sWinlogon & "\" & sSubKeys(i), "DllName")
+                
+                    If Len(sFile) = 0 Then
+                        sFile = "Invalid registry found"
+                    Else
+                        If StrComp(Mid(sFile, 1, 1), "\", vbTextCompare) = 0 Then
+                            If FileExists(sWinDir & "\" & sFile) Then sFile = sWinDir & "\" & sFile
+                            If FileExists(sWinSysDir & "\" & sFile) Then sFile = sWinSysDir & "\" & sFile
+                        End If
+                    
+                        sFile = NormalizePath(sFile)
+                    
+                        If Not FileExists(sFile) Then sFile = sFile & " (file missing)"
+                        If FileExists(sFile) And bMD5 Then
+                            sFile = sFile & GetFileFromAutostart(sFile)
+                        End If
+                    
+    '                    If InStr(1, sFile, "%", vbTextCompare) = 1 Then
+    '                       sFile = "Suspicious registry value"
+    '                  End If
+                  
+                    End If
+                
+                    sHit = "O20 - Winlogon Notify: " & sSubKeys(i) & " - " & sFile
+                    If Not IsOnIgnoreList(sHit) Then
+                        frmMain.lstResults.AddItem sHit
+                    End If
+                End If
+            Next i
+        End If
+    End Sub
+  */
+
+  #endregion
+}

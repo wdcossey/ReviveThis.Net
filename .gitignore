@@ -1,0 +1,19 @@
+.hgignore
+syntax: glob
+**/Build/*
+**/bin/*
+**/obj/*
+*.suo
+VisualBasic6/VisualBasic6.Portable/
+VisualBasic6/HiJackThis/.svn/
+VisualBasic6/HiJackThis/db/
+VisualBasic6/HiJackThis/hooks/
+VisualBasic6/HiJackThis/conf/
+VisualBasic6/HiJackThis/locks/
+Thumbs.db
+*.orig
+*.sou
+*.csproj.user
+UpgradeLog*.htm
+VisualBasic6/HiJackThis/beta/2.0.6/hijackthis.log
+packages/*

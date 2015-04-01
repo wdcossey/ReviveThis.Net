@@ -1,0 +1,93 @@
+StartupList version history:
+
+v1.52
+* Fixed stupid 'Bad filename or number' error at startup (hopefully)
+* Fixed two bugs in function that reads settings from .ini files
+* Added two more files to LSP files safelist (MS Firewall and
+  DiamondCS)
+* Fixed not detecting modified Shell line in XP (among others, this
+  BIG bug affected two sections)
+* Added listing of values in ShellServiceObjectDelayLoad regkey
+
+v1.51
+* Added switch: /full, which will show some rarely important
+  sections that otherwise remain hidden:  Stub Paths, Explorer Check, 
+  Config.sys, Dosstart.bat, Superhidden Extensions, 
+  Regedit.exe Check, WinNT Services, Win9x VxD Services
+* Lines in BAT files with both 'ECHO' and '>' are now shown
+* Windows NT Logon/logoff scripts are now listed (new section)
+* Rudimentary check for PendingFileRenameOperations in NT, located
+  in above section. Also moved BootExecute check to this section
+
+v1.5
+* Added more files to safe list of LSP files
+* REM/ECHO line in .bat files only listed with /complete switch
+* Check for Policies\System\Shell= at SYSTEM.INI check
+* Added enumeration of Windows NT/2000/XP services (only
+  with /full switch)
+* Also lists Windows 9x Vxd services (only with /full switch)
+
+v1.4
+* Added listing of Winsock LSP providers
+* Fixed a NT bug with Load key
+
+v1.35
+* Fixed a few items not appearing in NT/2000/XP.
+* Made Regedit check even more supple.
+
+v1.34
+* Added listing of drivers= line from system.ini
+* Some more sections are now hidden if nothing interesting is there
+* Enumeration of Stub Paths now shows disabled items
+* Fixed a few bugs
+* Workaround for Atguard 'From:' bug :)
+
+v1.33
+* Fixed some erroneous errors.
+* Added listing of MSIE version.
+
+v1.32
+* Fixed a few bugs. That's basically it. :)
+
+v1.31
+* Finally added alternative (and better) method for listing processes
+  in Windows NT/2000/XP (PSAPI.DLL needed for NT4)
+* Improved filename extracting from shortcuts - StartupList should
+  not be able to extract filenames with a 100% success rate
+* Creation date is now displayed for Wininit.ini and Wininit.bak
+* Added Regedit check
+* Added listing of BHO's
+* Added listing of Task Scheduler jobs
+* Added listing of 'Download Program Files' (aka ActiveX Objects)
+
+v1.3
+* Added /html parameter, for a report in HTML format
+* Lots of performance enhancements, more readble code (like you care :)
+* Also some small upgrades/tweaks
+
+v1.23
+* Now also lists WININIT.BAK (the last WININIT.INI)
+
+v1.22
+* Made System.ini check platform independant (was Win9x only)
+* The target file & path is now extracted from enumerated shortcuts
+* Fixed MAJOR bug - GetWindowsVersion wasn't remembered, WinNT was
+  assumed
+
+v1.21
+* Fixed some WinNT bugs
+* Slightly improved Explorer.exe check in WinNT
+
+v1.2
+* Added WinNT-only startups
+* Added Windows version check
+* Added command line parameters /verbose, /complete,
+  /force9x, /forcent and /forceall
+
+v1.1
+* Added RunOnceEx listing
+
+v1.0
+* Initial release
+
+
