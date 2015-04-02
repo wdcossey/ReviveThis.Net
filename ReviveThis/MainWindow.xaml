@@ -9,7 +9,7 @@
     WindowStyle="None" 
     Title="ReviveThis.Net" 
     Height="600" Width="800"
-    ContentSource="/Pages/pgScanSelection.xaml" 
+    ContentSource="/Pages/DetectionSelection.xaml" 
     WindowStartupLocation="CenterScreen" 
     ResizeMode="CanResizeWithGrip">
 
@@ -17,11 +17,13 @@
         <reviveThis:MainWindow/>
     </mui:ModernWindow.DataContext>-->
     
-    <!--<mui:ModernWindow.TitleLinks>
+    <mui:ModernWindow.TitleLinks>
         <mui:LinkCollection >
-            <mui:Link DisplayName="about" Source="/Pages/pgAbout.xaml" />
+            <mui:Link DisplayName="settings" Source="/Pages/AddInManager.xaml" />
+            <mui:Link DisplayName="about" Source="/Pages/About.xaml" />
+            <mui:Link DisplayName="help" Source="https://bitbucket.org/wdcossey/revivethis.net/issues" />
         </mui:LinkCollection>
-    </mui:ModernWindow.TitleLinks>-->
+    </mui:ModernWindow.TitleLinks>
     
     <mui:ModernWindow.Resources>
         <!--<Style TargetType="{x:Type mui:ModernMenu}">
@@ -32,26 +34,33 @@
     
     <mui:ModernWindow.MenuLinkGroups >
 
-        <mui:LinkGroup DisplayName="scan" >
+        <mui:LinkGroup DisplayName="Scan" >
             <mui:LinkGroup.Links >
-                <mui:Link DisplayName="selection" Source="/Pages/pgScanSelection.xaml" />
-                <mui:Link DisplayName="results" Source="/Pages/pgScanResults.xaml" />
+                <mui:Link DisplayName="selection" Source="/Pages/DetectionSelection.xaml" />
+                <mui:Link DisplayName="results" Source="/Pages/DetectionResults.xaml" />
                 <mui:Link DisplayName="analysis" Source="/Pages/pgScan.xaml" />
                 <mui:Link DisplayName="log" Source="/Pages/pgScan.xaml" />
             </mui:LinkGroup.Links>
 
         </mui:LinkGroup>
-        <mui:LinkGroup DisplayName="tools" >
+        <mui:LinkGroup DisplayName="Tools" >
             <mui:LinkGroup.Links>
 
             </mui:LinkGroup.Links>
         </mui:LinkGroup>
-        <mui:LinkGroup DisplayName="settings" >
+        
+        <mui:LinkGroup DisplayName="Settings" GroupKey="settings">
             <mui:LinkGroup.Links>
-                <mui:Link DisplayName="add-in's" Source="/Pages/pgAddInManager.xaml" />
-                <mui:Link DisplayName="about" Source="/Content/AboutSelectionList.xaml" />
+                <mui:Link DisplayName="add-in's" Source="/Pages/AddInManager.xaml" />
             </mui:LinkGroup.Links>
         </mui:LinkGroup>
+        
+        <mui:LinkGroup DisplayName="About" GroupKey="about">
+            <mui:LinkGroup.Links>
+                <mui:Link DisplayName="credits" Source="/Pages/About.xaml" />
+            </mui:LinkGroup.Links>
+        </mui:LinkGroup>
+        
     </mui:ModernWindow.MenuLinkGroups>
 
     <!-- ensures new LoremIpsum content is loaded for each uri -->

@@ -5,9 +5,9 @@ namespace ReviveThis.Content
   /// <summary>
   /// 
   /// </summary>
-  public partial class AboutSelectionList : UserControl
+  public partial class AboutReviveThis : UserControl
   {
-    public AboutSelectionList()
+    public AboutReviveThis()
     {
       InitializeComponent();
     }

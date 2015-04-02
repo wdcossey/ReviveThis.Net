@@ -49,21 +49,9 @@ namespace ReviveThis.ViewModels
       get { return new RelayCommand(o => System.Diagnostics.Process.Start("https://www.twitter.com/wdcossey")); }
     }
 
-    public ICommand TogglePopup
-    {
-      get { return new RelayCommand(o => IsOpen = !IsOpen); }
-    }
-
-    private bool _isOpen;
-    public bool IsOpen
-    {
-      get { return _isOpen; }
-      set
-      {
-        if (_isOpen == value) return;
-        _isOpen = value;
-        OnPropertyChanged();
-      }
+    public ICommand NavigateMailTo
+    { 
+      get { return new RelayCommand(o => System.Diagnostics.Process.Start("mailto:")); }
     }
 
     public event PropertyChangedEventHandler PropertyChanged;

@@ -199,10 +199,6 @@
       <Project>{fc198160-6a8c-49ba-a655-c5a43950db45}</Project>
       <Name>ReviveThis.Net.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ReviveThis.Net.Components\ReviveThis.Net.Components.csproj">
-      <Project>{f7e55675-9081-4f4e-8c06-5249d07e818d}</Project>
-      <Name>ReviveThis.Net.Components</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Dialogs\" />

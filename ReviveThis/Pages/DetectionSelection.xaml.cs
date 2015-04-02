@@ -8,9 +8,9 @@ namespace ReviveThis.Pages
   /// <summary>
   /// Interaction logic for Page1.xaml
   /// </summary>
-  public partial class ScanSelectionPage : UserControl, IContent
+  public partial class DetectionSelection : UserControl, IContent
   {
-    public ScanSelectionPage()
+    public DetectionSelection()
     {
       InitializeComponent();
     }

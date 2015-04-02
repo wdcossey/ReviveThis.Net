@@ -6,9 +6,9 @@ using FirstFloor.ModernUI.Windows.Navigation;
 
 namespace ReviveThis.ViewModels
 {
-  public class ScanSelectionViewModel
+  public class DetectionSelectionViewModel
   {
-    public ScanSelectionViewModel()
+    public DetectionSelectionViewModel()
     {
         _canExecute = true;
     }

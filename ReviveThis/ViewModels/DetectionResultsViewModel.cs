@@ -24,14 +24,14 @@ using ReviveThis.ValueConverters;
 
 namespace ReviveThis.ViewModels
 {
-  public class ScanResultsViewModel : INotifyPropertyChanged
+  public class DetectionResultsViewModel : INotifyPropertyChanged
   {
     private ICommand _startScanCommand;
     private bool _startScanEnabled = true;
     private ScanResultTypeValueConverter _valueConverter;
 
     #region Construction
-    public ScanResultsViewModel()
+    public DetectionResultsViewModel()
     {
       _valueConverter = new ScanResultTypeValueConverter(true);
     }

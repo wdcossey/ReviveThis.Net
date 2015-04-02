@@ -3,11 +3,11 @@
 namespace ReviveThis.Pages
 {
   /// <summary>
-  /// Interaction logic for LayoutTab.xaml
+  /// 
   /// </summary>
-  public partial class ScanTabs : UserControl
+  public partial class About : UserControl
   {
-    public ScanTabs()
+    public About()
     {
       InitializeComponent();
     }

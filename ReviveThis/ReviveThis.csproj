@@ -69,25 +69,24 @@
     <Compile Include="Content\AboutHiJackThis.xaml.cs">
       <DependentUpon>AboutHiJackThis.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Content\License.xaml.cs">
+      <DependentUpon>License.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\IScanContentControl.cs" />
-    <Compile Include="Content\AboutSelectionList.xaml.cs">
-      <DependentUpon>AboutSelectionList.xaml</DependentUpon>
+    <Compile Include="Pages\About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
     </Compile>
     <Compile Include="ReviveThisLinkNavigator.cs" />
     <Compile Include="ReviveThisContentLoader.cs" />
     <Compile Include="Models\AddInInformation.cs" />
     <Compile Include="Models\AddInModel.cs" />
-    <Compile Include="Pages\pgAddInManager.xaml.cs">
-      <DependentUpon>pgAddInManager.xaml</DependentUpon>
+    <Compile Include="Pages\AddInManager.xaml.cs">
+      <DependentUpon>AddInManager.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\pgScanResults.xaml.cs">
-      <DependentUpon>pgScanResults.xaml</DependentUpon>
+    <Compile Include="Pages\DetectionResults.xaml.cs">
+      <DependentUpon>DetectionResults.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Structs\UpdateScanContent.cs" />
     <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="Pages\ScanTabs.xaml.cs">
-      <DependentUpon>ScanTabs.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ValueConverters\AddInFileNameValueConveter.cs" />
     <Compile Include="ValueConverters\ContextMenuValueConverter.cs" />
     <Compile Include="ValueConverters\ScanResultContextMenuVisibilityValueConverter.cs" />
@@ -97,8 +96,8 @@
     <Compile Include="ViewModels\AboutHiJackThisViewModel.cs" />
     <Compile Include="ViewModels\AboutMeViewModel.cs" />
     <Compile Include="ViewModels\AddInViewModel.cs" />
-    <Compile Include="ViewModels\ScanResultsViewModel.cs" />
-    <Compile Include="ViewModels\ScanSelectionViewModel.cs" />
+    <Compile Include="ViewModels\DetectionResultsViewModel.cs" />
+    <Compile Include="ViewModels\DetectionSelectionViewModel.cs" />
     <Page Include="Assets\ModernUI.MyTheme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -115,6 +114,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Content\License.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -127,38 +130,34 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Content\AboutSelectionList.xaml">
+    <Page Include="Content\AboutReviveThis.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Content\AboutMeContent.xaml">
+    <Page Include="Pages\About.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\AddInManager.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\pgAddInManager.xaml">
+    <Page Include="Pages\DetectionResults.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\pgScanResults.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\pgScanSelection.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\ScanTabs.xaml">
+    <Page Include="Pages\DetectionSelection.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\AboutMe.cs" />
-    <Compile Include="Content\AboutMeContent.xaml.cs">
-      <DependentUpon>AboutMeContent.xaml</DependentUpon>
+    <Compile Include="Content\AboutReviveThis.xaml.cs">
+      <DependentUpon>AboutReviveThis.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\pgScanSelection.xaml.cs">
-      <DependentUpon>pgScanSelection.xaml</DependentUpon>
+    <Compile Include="Pages\DetectionSelection.xaml.cs">
+      <DependentUpon>DetectionSelection.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -174,7 +173,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -198,7 +197,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Enums\" />
+    <Folder Include="Structs\" />
     <Folder Include="UserControls\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gpl-2.0.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gpl_2.0.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

@@ -20,7 +20,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition MaxHeight="160" />
+                <RowDefinition MaxHeight="160" MinHeight="100" />
             </Grid.RowDefinitions>
             <ListView 
                 x:Name="AddInListView" 
@@ -31,6 +31,7 @@
                 SelectedItem="{Binding SelectedItem, Mode=TwoWay}" >
                 <ListView.View>
                     <GridView AllowsColumnReorder="False">
+                        
                         <GridViewColumn>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
@@ -38,28 +39,13 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
+                        
                         <GridViewColumn Header="Name" Width="Auto" DisplayMemberBinding="{Binding Name, Mode=OneWay}"/>
                         <GridViewColumn Header="Version" Width="Auto" DisplayMemberBinding="{Binding Version, Mode=OneWay}"/>
                         <GridViewColumn Header="Author" Width="Auto" DisplayMemberBinding="{Binding Author, Mode=OneWay}"/>
 
-                        <!--<GridView.ColumnHeaderToolTip>
-                            <ToolTip>
-                                <StackPanel>
-                                    <TextBlock FontWeight="Bold">Submit Request</TextBlock>
-                                    <TextBlock>Submits the request to the server.</TextBlock>
-                                </StackPanel>
-                            </ToolTip>
-                        </GridView.ColumnHeaderToolTip>-->
-                        
                     </GridView>
-
                 </ListView.View>
-
-                <!--<ListView.Resources>
-                    <Style TargetType="{x:Type TextBlock}">
-                        <Setter Property="ToolTip" Value="{Binding Description, Converter={StaticResource StringToHtmlConverter} }"></Setter>
-                    </Style>
-                </ListView.Resources>-->
                 
                 <ListView.GroupStyle>
                     <GroupStyle>
@@ -70,17 +56,7 @@
                         </GroupStyle.HeaderTemplate>
                     </GroupStyle>
                 </ListView.GroupStyle>
-
-                <!--<ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Vertical">
-                                <Label>Name</Label>
-                                <TextBlock Text="{Binding Name}"/>
-                                <Label>Modified</Label>
-                                <TextBlock Text="{Binding Author}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>-->
+                
             </ListView>
             <GridSplitter Grid.Row="1" Height="1"></GridSplitter>
             <ScrollViewer

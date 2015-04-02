@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,19 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ReviveThis.Interfaces;
 
-namespace ReviveThis.Pages
+namespace ReviveThis.Content
 {
   /// <summary>
-  /// Interaction logic for pgAddInManager.xaml
+  /// Interaction logic for Licence.xaml
   /// </summary>
-  public partial class AddInManagerPage : Page
+  public partial class License : UserControl
   {
-    public AddInManagerPage()
+    public License()
     {
       InitializeComponent();
     }
-
   }
 }

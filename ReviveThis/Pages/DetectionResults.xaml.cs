@@ -13,14 +13,14 @@ namespace ReviveThis.Pages
   /// <summary>
   /// Interaction logic for pgScanResults.xaml
   /// </summary>
-  public partial class ScanResultsPage : UserControl, IContent
+  public partial class DetectionResults : UserControl, IContent
   {
-    private readonly ScanResultsViewModel _dataContext;
+    private readonly DetectionResultsViewModel _dataContext;
 
-    public ScanResultsPage()
+    public DetectionResults()
     {
       InitializeComponent();
-      _dataContext = (DataContext as ScanResultsViewModel);
+      _dataContext = (DataContext as DetectionResultsViewModel);
     }
 
     public void OnFragmentNavigation(FragmentNavigationEventArgs e)

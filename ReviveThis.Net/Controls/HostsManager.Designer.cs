@@ -36,7 +36,7 @@
       this.lblCaption = new System.Windows.Forms.Label();
       this.btnDelete = new System.Windows.Forms.Button();
       this.btnToggle = new System.Windows.Forms.Button();
-      this.btnNotepad = new wyDay.Controls.SplitButton();
+      this.btnNotepad = new System.Windows.Forms.Button();
       this.cmsNotepad = new System.Windows.Forms.ContextMenuStrip(this.components);
       this.muiElevated = new System.Windows.Forms.ToolStripMenuItem();
       this.btnBack = new System.Windows.Forms.Button();
@@ -146,7 +146,7 @@
       this.btnNotepad.Location = new System.Drawing.Point(215, 319);
       this.btnNotepad.Name = "btnNotepad";
       this.btnNotepad.Size = new System.Drawing.Size(116, 25);
-      this.btnNotepad.SplitMenuStrip = this.cmsNotepad;
+      //this.btnNotepad.SplitMenuStrip = this.cmsNotepad;
       this.btnNotepad.TabIndex = 3;
       this.btnNotepad.Text = "Open in Notepad";
       this.btnNotepad.UseVisualStyleBackColor = true;
@@ -199,7 +199,7 @@
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.Button btnBack;
     private System.Windows.Forms.Button btnToggle;
-    private wyDay.Controls.SplitButton btnNotepad;
+    private System.Windows.Forms.Button btnNotepad;
     private System.Windows.Forms.ContextMenuStrip cmsNotepad;
     private System.Windows.Forms.ToolStripMenuItem muiElevated;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
