@@ -48,9 +48,15 @@
       this.button3 = new System.Windows.Forms.Button();
       this.cmsAnalyse = new System.Windows.Forms.ContextMenuStrip(this.components);
       this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.tabControl1 = new System.Windows.Forms.TabControl();
+      this.tabPage1 = new System.Windows.Forms.TabPage();
+      this.tabPage2 = new System.Windows.Forms.TabPage();
+      this.uninstallManager1 = new ReviveThis.Controls.UninstallManager();
       this.menuStrip1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.betterListView1)).BeginInit();
       this.cmsAnalyse.SuspendLayout();
+      this.tabControl1.SuspendLayout();
+      this.tabPage2.SuspendLayout();
       this.SuspendLayout();
       // 
       // button1
@@ -211,11 +217,51 @@
       this.testToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
       this.testToolStripMenuItem.Text = "&Test";
       // 
+      // tabControl1
+      // 
+      this.tabControl1.Controls.Add(this.tabPage1);
+      this.tabControl1.Controls.Add(this.tabPage2);
+      this.tabControl1.Location = new System.Drawing.Point(21, 72);
+      this.tabControl1.Name = "tabControl1";
+      this.tabControl1.SelectedIndex = 0;
+      this.tabControl1.Size = new System.Drawing.Size(594, 337);
+      this.tabControl1.TabIndex = 7;
+      // 
+      // tabPage1
+      // 
+      this.tabPage1.Location = new System.Drawing.Point(4, 22);
+      this.tabPage1.Name = "tabPage1";
+      this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+      this.tabPage1.Size = new System.Drawing.Size(586, 311);
+      this.tabPage1.TabIndex = 0;
+      this.tabPage1.Text = "tabPage1";
+      this.tabPage1.UseVisualStyleBackColor = true;
+      // 
+      // tabPage2
+      // 
+      this.tabPage2.Controls.Add(this.uninstallManager1);
+      this.tabPage2.Location = new System.Drawing.Point(4, 22);
+      this.tabPage2.Name = "tabPage2";
+      this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+      this.tabPage2.Size = new System.Drawing.Size(586, 311);
+      this.tabPage2.TabIndex = 1;
+      this.tabPage2.Text = "tabPage2";
+      this.tabPage2.UseVisualStyleBackColor = true;
+      // 
+      // uninstallManager1
+      // 
+      this.uninstallManager1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.uninstallManager1.Location = new System.Drawing.Point(3, 3);
+      this.uninstallManager1.Name = "uninstallManager1";
+      this.uninstallManager1.Size = new System.Drawing.Size(580, 305);
+      this.uninstallManager1.TabIndex = 0;
+      // 
       // FrmMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(650, 421);
+      this.Controls.Add(this.tabControl1);
       this.Controls.Add(this.button3);
       this.Controls.Add(this.betterListView1);
       this.Controls.Add(this.button2);
@@ -230,6 +276,8 @@
       this.menuStrip1.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this.betterListView1)).EndInit();
       this.cmsAnalyse.ResumeLayout(false);
+      this.tabControl1.ResumeLayout(false);
+      this.tabPage2.ResumeLayout(false);
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -256,6 +304,10 @@
     private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+    private System.Windows.Forms.TabControl tabControl1;
+    private System.Windows.Forms.TabPage tabPage1;
+    private System.Windows.Forms.TabPage tabPage2;
+    private Controls.UninstallManager uninstallManager1;
 
 
 

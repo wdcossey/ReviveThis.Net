@@ -23,10 +23,6 @@
                 <mui:Link DisplayName="ReviveThis.Net" Source="/Content/AboutReviveThis.xaml" />
                 <mui:Link DisplayName="HiJackThis" Source="/Content/AboutHiJackThis.xaml" />
                 <mui:Link DisplayName="Licence" Source="/Content/License.xaml" />
-                <!--<mui:Link DisplayName="Lorem Ipsum 2" Source="/2" />
-                <mui:Link DisplayName="Lorem Ipsum 3" Source="/3"/>
-                <mui:Link DisplayName="Lorem Ipsum 4" Source="/4" />
-                <mui:Link DisplayName="Lorem Ipsum 5" Source="/5"/>-->
             </mui:ModernTab.Links>
 
             <mui:ModernTab.ContentLoader>

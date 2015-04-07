@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="ReviveThis.Net.Tool.HostsManager.ToolContent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             xmlns:viewModels="clr-namespace:ReviveThis.Net.Tool.HostsManager.ViewModels"
+             xmlns:valueConverters="clr-namespace:ReviveThis.Net.Tool.HostsManager.ValueConverters"
+             xmlns:hostsManager="clr-namespace:ReviveThis.Net.Tool.HostsManager"
+             mc:Ignorable="d" 
+             d:DesignHeight="480" 
+             d:DesignWidth="640"
+             d:DataContext="{d:DesignData }">
+
+
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Assets/ListBox.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <valueConverters:ForegroundValueConverter x:Key="ForegroundConverter"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <UserControl.DataContext>
+        <viewModels:HostsManagerViewModel/>
+    </UserControl.DataContext>
+
+    <Grid Style="{StaticResource ContentRoot}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <mui:BBCodeBlock
+            Padding="0,8,0,8"
+            Grid.Row="0">
+            <mui:BBCodeBlock.BBCode>
+                <MultiBinding StringFormat="{}Hosts file is located at: [b]{0}[/b] ({1} lines, {2})">
+                    <Binding Path="HostsFileReader.Location" Mode="OneWay"></Binding>
+                    <Binding Path="HostsFileReader.LineCount" Mode="OneWay"></Binding>
+                    <Binding Path="HostsFileReader.FormattedAttributes" Mode="OneWay"></Binding>
+                </MultiBinding>
+            </mui:BBCodeBlock.BBCode>
+        </mui:BBCodeBlock>
+
+
+        <ListBox x:Name="listBox"
+            Grid.Row="1"
+            BorderThickness="1"
+            BorderBrush="{StaticResource ItemBorder}"
+            SelectionMode="Extended"
+            ItemsSource="{Binding HostsContent, Mode=TwoWay}">
+            <ListBox.ItemTemplate >
+                <DataTemplate >
+                    <StackPanel Orientation="Horizontal">
+                        <mui:BBCodeBlock Foreground="{Binding Converter={StaticResource ForegroundConverter}}" BBCode="{Binding}"></mui:BBCodeBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+        </ListBox>
+
+        <mui:BBCodeBlock
+            Padding="0,8,0,8"
+            Grid.Row="2">
+            <mui:BBCodeBlock.BBCode>[b]Note:[/b] Changes to the hosts file take effect when you restart your browser.</mui:BBCodeBlock.BBCode>
+        </mui:BBCodeBlock>
+
+    </Grid>
+</UserControl>

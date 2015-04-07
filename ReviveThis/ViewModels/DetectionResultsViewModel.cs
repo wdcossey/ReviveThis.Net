@@ -112,7 +112,7 @@ namespace ReviveThis.ViewModels
 
 
 
-        foreach (var addIn in ReviveThisApplication.Default.AddIns.ScanAddIns.OrderBy(o => o.ResultType))
+        foreach (var addIn in ReviveThisApplication.Default.AddIns.Detection.OrderBy(o => o.ResultType))
         {
           try
           {

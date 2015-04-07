@@ -766,7 +766,7 @@ namespace ReviveThis.Forms
                 .ToArray());
         }
 
-        foreach (var addIn in ReviveThisApplication.Default.AddIns.ScanAddIns.OrderBy(o => o.ResultType))
+        foreach (var addIn in ReviveThisApplication.Default.AddIns.Detection.OrderBy(o => o.ResultType))
         {
           try
           {
@@ -848,7 +848,7 @@ namespace ReviveThis.Forms
 
     private void button2_Click(object sender, EventArgs e)
     {
-      var result = ReviveThisApplication.Default.AddIns.ScanAddIns.OrderBy(o => o.ResultType)
+      var result = ReviveThisApplication.Default.AddIns.Detection.OrderBy(o => o.ResultType)
         .Aggregate(string.Empty, (current, addIn) => current + string.Format("{0} - v{1}\n", addIn.Name, addIn.Version));
       MessageBox.Show(result);
     }
@@ -951,11 +951,11 @@ namespace ReviveThis.Forms
     {
       try
       {
-        if (ReviveThisApplication.Default.AddIns.AnalysisAddIns.Any())
+        if (ReviveThisApplication.Default.AddIns.Analysis.Any())
         {
           cmsAnalyse.Items.Clear();
           cmsAnalyse.Items.AddRange(
-            ReviveThisApplication.Default.AddIns.AnalysisAddIns.Select(
+            ReviveThisApplication.Default.AddIns.Analysis.Select(
               o => new ToolStripMenuItem(o.Name, null, AnalyserEventHandler) {Tag = o}).ToArray());
           cmsAnalyse.Show(button3, 0, button3.Height);
         }

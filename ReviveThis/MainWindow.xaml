@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mui="http://firstfloorsoftware.com/ModernUI"
     xmlns:reviveThis="clr-namespace:ReviveThis"
+    xmlns:viewModels="clr-namespace:ReviveThis.ViewModels"
     IsTitleVisible="True"
     AllowsTransparency="True"
     WindowStyle="None" 
@@ -11,11 +12,12 @@
     Height="600" Width="800"
     ContentSource="/Pages/DetectionSelection.xaml" 
     WindowStartupLocation="CenterScreen" 
-    ResizeMode="CanResizeWithGrip">
+    ResizeMode="CanResizeWithGrip"
+    MenuLinkGroups="{Binding MenuCollection}">
 
-    <!--<mui:ModernWindow.DataContext>
-        <reviveThis:MainWindow/>
-    </mui:ModernWindow.DataContext>-->
+    <mui:ModernWindow.DataContext>
+        <viewModels:MainViewModel/>
+    </mui:ModernWindow.DataContext>
     
     <mui:ModernWindow.TitleLinks>
         <mui:LinkCollection >
@@ -32,7 +34,7 @@
     </mui:ModernWindow.Resources>
     
     
-    <mui:ModernWindow.MenuLinkGroups >
+    <!--<mui:ModernWindow.MenuLinkGroups >
 
         <mui:LinkGroup DisplayName="Scan" >
             <mui:LinkGroup.Links >
@@ -44,8 +46,8 @@
 
         </mui:LinkGroup>
         <mui:LinkGroup DisplayName="Tools" >
-            <mui:LinkGroup.Links>
-
+            <mui:LinkGroup.Links >
+                <mui:Link DisplayName="testing tools mef" Source="A9D23C9A-AAD2-4B3C-8DBA-96CA885ED129" />
             </mui:LinkGroup.Links>
         </mui:LinkGroup>
         
@@ -61,7 +63,7 @@
             </mui:LinkGroup.Links>
         </mui:LinkGroup>
         
-    </mui:ModernWindow.MenuLinkGroups>
+    </mui:ModernWindow.MenuLinkGroups>-->
 
     <!-- ensures new LoremIpsum content is loaded for each uri -->
     <mui:ModernWindow.ContentLoader>

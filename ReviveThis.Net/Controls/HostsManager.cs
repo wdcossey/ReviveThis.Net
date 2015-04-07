@@ -24,8 +24,9 @@ namespace ReviveThis.Controls
       lstHosts.KeyPress += HostsOnKeyPress;
       lstHosts.SelectedIndexChanged += HostsSelectedIndexChanged;
 
-      //Load the Hosts file.
-      _hostsFile = Hosts.ListHostsFile().Result;
+      if (!this.DesignMode)
+        //Load the Hosts file.
+        _hostsFile = Hosts.ListHostsFile().Result;
 
       if (_hostsFile != null && _hostsFile.LineCount > 0)
       {

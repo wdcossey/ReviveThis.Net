@@ -16,7 +16,7 @@ namespace ReviveThis.Entities
     /// <summary>
     /// Hosts file Attributes.
     /// </summary>
-    public FileAttributes? Attributes { get; private set; }
+    public FileAttributes? Attributes { get; set; }
 
     /// <summary>
     /// Hosts file Attributes (Formatted to a System.String).
@@ -29,12 +29,12 @@ namespace ReviveThis.Entities
     /// <summary>
     /// Hosts file Location.
     /// </summary>
-    public string Location { get; private set; }
+    public string Location { get; set; }
 
     /// <summary>
     /// Hosts file type.
     /// </summary>
-    public HostsFileType FileType { get; private set; }
+    public HostsFileType FileType { get; set; }
 
     /// <summary>
     /// Number of lines in the Hosts file.
@@ -42,6 +42,11 @@ namespace ReviveThis.Entities
     public Int32 LineCount
     {
       get { return Lines == null ? 0 : Lines.Count(); }
+    }
+
+    public HostsFileReader()
+    {
+      
     }
 
     public HostsFileReader(string[] lines, HostsFileType fileType, string location, FileAttributes? attributes)

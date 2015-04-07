@@ -110,12 +110,14 @@
     <Compile Include="Entities\RegistryResultItem.cs" />
     <Compile Include="Entities\RegistryParser.cs" />
     <Compile Include="Entities\ScanItemContextMenu.cs" />
+    <Compile Include="Entities\ToolContentAttribute.cs" />
     <Compile Include="Enums\RepairResultType.cs" />
     <Compile Include="Enums\AnalyseResultType.cs" />
     <Compile Include="Helpers\Elevation.cs" />
     <Compile Include="Helpers\MultipartFormData.cs" />
     <Compile Include="Interfaces\IAddInBase.cs" />
     <Compile Include="Interfaces\IAnalysisAddIn.cs" />
+    <Compile Include="Interfaces\IAddInContentMetadata.cs" />
     <Compile Include="Interfaces\ICustomAddInSection.cs" />
     <Compile Include="Interfaces\IDetectionItemToolTip.cs" />
     <Compile Include="Interfaces\IDetectionItemContextMenu.cs" />
@@ -123,6 +125,7 @@
     <Compile Include="Interfaces\IDetectionRepair.cs" />
     <Compile Include="Interfaces\IDetectionRepairResult.cs" />
     <Compile Include="Interfaces\ISortableAddIn.cs" />
+    <Compile Include="Interfaces\IToolAddIn.cs" />
     <Compile Include="Structs\AnalyseResult.cs" />
     <Compile Include="Structs\CustomAddInSection.cs" />
     <Compile Include="Interfaces\IAnalysisResult.cs" />
@@ -144,6 +147,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\mui\1.0\FirstFloor.ModernUI\FirstFloor.ModernUI\FirstFloor.ModernUI.csproj">
+      <Project>{9A653A28-FE46-40E8-A14F-48B0E325165D}</Project>
+      <Name>FirstFloor.ModernUI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

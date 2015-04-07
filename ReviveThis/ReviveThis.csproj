@@ -46,6 +46,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
@@ -66,13 +67,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ContentLoaders\AboutContentLoader.cs" />
+    <Compile Include="ContentLoaders\ToolsContentLoader.cs" />
     <Compile Include="Content\AboutHiJackThis.xaml.cs">
       <DependentUpon>AboutHiJackThis.xaml</DependentUpon>
     </Compile>
     <Compile Include="Content\License.xaml.cs">
       <DependentUpon>License.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\IScanContentControl.cs" />
     <Compile Include="Pages\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
@@ -98,6 +99,7 @@
     <Compile Include="ViewModels\AddInViewModel.cs" />
     <Compile Include="ViewModels\DetectionResultsViewModel.cs" />
     <Compile Include="ViewModels\DetectionSelectionViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
     <Page Include="Assets\ModernUI.MyTheme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -198,6 +200,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Enums\" />
+    <Folder Include="Interfaces\" />
     <Folder Include="Structs\" />
     <Folder Include="UserControls\" />
   </ItemGroup>
