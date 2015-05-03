@@ -205,9 +205,6 @@
     <Folder Include="UserControls\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\gpl-2.0.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\gpl_2.0.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
