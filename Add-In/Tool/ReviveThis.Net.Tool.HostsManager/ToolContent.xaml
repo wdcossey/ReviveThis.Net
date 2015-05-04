@@ -29,8 +29,7 @@
         <viewModels:HostsManagerViewModel/>
     </UserControl.DataContext>
 
-    <Grid Style="{StaticResource ContentRoot}">
-
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>

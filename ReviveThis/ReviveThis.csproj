@@ -74,6 +74,9 @@
     <Compile Include="Content\License.xaml.cs">
       <DependentUpon>License.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Tools.xaml.cs">
+      <DependentUpon>Tools.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
@@ -94,6 +97,7 @@
     <Compile Include="ValueConverters\ScanResultToolTipValueConverter.cs" />
     <Compile Include="ValueConverters\ScanResultTypeValueConverter.cs" />
     <Compile Include="ValueConverters\StringsToHtmlValueConverter.cs" />
+    <Compile Include="ViewModels\ToolsViewModel.cs" />
     <Compile Include="ViewModels\AboutHiJackThisViewModel.cs" />
     <Compile Include="ViewModels\AboutMeViewModel.cs" />
     <Compile Include="ViewModels\AddInViewModel.cs" />
@@ -135,6 +139,10 @@
     <Page Include="Content\AboutReviveThis.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Tools.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\About.xaml">
       <Generator>MSBuild:Compile</Generator>

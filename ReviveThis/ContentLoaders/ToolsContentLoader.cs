@@ -1,27 +1,23 @@
 ﻿using System;
+using System.Linq;
 using FirstFloor.ModernUI.Windows;
 
 namespace ReviveThis.ContentLoaders
 {
-  public class ToolsContentLoader: DefaultContentLoader
+  public class ToolsContentLoader : DefaultContentLoader
+  {
+    protected override object LoadContent(Uri uri)
     {
-        //[ImportMany]
-        //private Lazy<IContent, IContentMetadata>[] Contents { get; set; }
+      var content = (from c in ReviveThis.Entities.ReviveThisApplication.Default.AddIns.Tools
+        where c.Guid.ToString().Equals(uri.OriginalString, StringComparison.OrdinalIgnoreCase)
+        select c.Content).FirstOrDefault();
 
-        protected override object LoadContent(Uri uri)
-        {
-            // lookup the content based on the content uri in the content metadata
-            //var content = (from c in this.Contents
-            //               where c.Metadata.ContentUri == uri.OriginalString
-            //               select c.Value).FirstOrDefault();
+      if (content == null)
+      {
+        return base.LoadContent(uri);
+      }
 
-            //if (content == null) {
-            //    throw new ArgumentException("Invalid uri: " + uri);
-            //}
-
-            //return content;
-
-          return null;
-        }
+      return content;
     }
+  }
 }

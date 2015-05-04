@@ -45,45 +45,17 @@ namespace ReviveThis.ViewModels
 
       menuCollection.Add(grpScan);
 
-      //menuCollection.Add(
-      //  new LinkGroup
-      //  {
-      //    DisplayName = "Scan",
-      //    Links = new LinkCollection(new List<Link>()
-      //    {
-      //      new Link
-      //      {
-      //        DisplayName = "Selection",
-      //        Source = new Uri("/Pages/DetectionSelection.xaml", UriKind.RelativeOrAbsolute)
-      //      },
-      //      new Link
-      //      {
-      //        DisplayName = "Results",
-      //        Source = new Uri("/Pages/DetectionResults.xaml", UriKind.RelativeOrAbsolute)
-      //      },
-      //      new Link
-      //      {
-      //        DisplayName = "Analysis",
-      //        Source = new Uri("/Pages/pgScan.xaml", UriKind.RelativeOrAbsolute)
-      //      },
-      //      new Link
-      //      {
-      //        DisplayName = "Log",
-      //        Source = new Uri("/Pages/pgScan.xaml", UriKind.RelativeOrAbsolute)
-      //      },
-      //    })
-      //  });
-
       var grpTools = new LinkGroup
       {
-        DisplayName = "Tools",
+        DisplayName = "Tools"
       };
 
-      foreach (var toolAddIn in ReviveThisApplication.Default.AddIns.Tools)
+      grpTools.Links.Add(new Link
       {
-        grpTools.Links.Add(new Link { DisplayName = toolAddIn.Name, Source = new Uri(toolAddIn.Guid.ToString(), UriKind.RelativeOrAbsolute) });
-      }
-      
+        DisplayName = "tools",
+        Source = new Uri("/Pages/Tools.xaml", UriKind.RelativeOrAbsolute)
+      });
+
       menuCollection.Add(grpTools);
 
       var grpSettings = new LinkGroup
