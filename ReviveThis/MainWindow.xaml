@@ -23,7 +23,7 @@
         <mui:LinkCollection >
             <mui:Link DisplayName="settings" Source="/Pages/AddInManager.xaml" />
             <mui:Link DisplayName="about" Source="/Pages/About.xaml" />
-            <mui:Link DisplayName="help" Source="https://bitbucket.org/wdcossey/revivethis.net/issues" />
+            <mui:Link DisplayName="help" Source="https://github.com/wdcossey/ReviveThis.Net/issues" />
         </mui:LinkCollection>
     </mui:ModernWindow.TitleLinks>
     
