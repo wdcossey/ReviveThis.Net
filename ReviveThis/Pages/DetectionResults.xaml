@@ -57,8 +57,20 @@
                     <ContextMenu
                         x:Key="ResultContextMenu" 
                         HasDropShadow="True"
-                        ItemsSource="{Binding Converter={StaticResource ContextMenuConverter}}"
-                        />
+                        ItemsSource="{Binding Converter={StaticResource ContextMenuConverter}}">
+                        <ContextMenu.Resources>
+                            <Style TargetType="{x:Type ContextMenu}" BasedOn="{StaticResource {x:Type ContextMenu}}" >
+                                <Setter Property="Visibility" Value="Visible"></Setter>
+                                <Setter Property="IsOpen" Value="False"></Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="ItemsSource" Value="{x:Null}">
+                                        <Setter Property="Visibility" Value="Collapsed" ></Setter>
+                                        
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ContextMenu.Resources>
+                    </ContextMenu>
                     
                     <Style TargetType="{x:Type TextBlock}">
                         <Setter Property="ToolTip" Value="{Binding Converter={StaticResource ScanResultToolTipConverter}}"></Setter>

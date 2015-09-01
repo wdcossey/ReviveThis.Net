@@ -16,7 +16,7 @@ namespace ReviveThis.ValueConverters
 
       if (resultItem == null || resultItem.MenuItems == null || !resultItem.MenuItems.Any())
       {
-        return new List<object>();
+        return null;
       }
 
       return MenuBuilder(resultItem.MenuItems);
