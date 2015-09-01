@@ -45,6 +45,10 @@
     <OutputPath>bin\x64\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FirstFloor.ModernUI, Version=1.0.6.0, Culture=neutral, PublicKeyToken=2d21ec3cd074c59a, processorArchitecture=MSIL">
+      <HintPath>..\packages\ModernUI.WPF.1.0.6\lib\net45\FirstFloor.ModernUI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
@@ -197,10 +201,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\mui\1.0\FirstFloor.ModernUI\FirstFloor.ModernUI\FirstFloor.ModernUI.csproj">
-      <Project>{9a653a28-fe46-40e8-a14f-48b0e325165d}</Project>
-      <Name>FirstFloor.ModernUI</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ReviveThis.Net.Common\ReviveThis.Net.Common.csproj">
       <Project>{fc198160-6a8c-49ba-a655-c5a43950db45}</Project>
       <Name>ReviveThis.Net.Common</Name>

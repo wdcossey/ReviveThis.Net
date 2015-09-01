@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReviveThis.Net", "ReviveThis.Net\ReviveThis.Net.csproj", "{233D9A62-41A4-463C-83D0-AFBA1870B97B}"
 EndProject
@@ -39,6 +39,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{3BF7
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReviveThis.Net.AddIn.GroupPolicy", "Add-In\Scan\ReviveThis.Net.AddIn.GroupPolicy\ReviveThis.Net.AddIn.GroupPolicy.csproj", "{9B78F647-A3BD-4563-9A65-ABA06C42C4C3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReviveThis.Net.AddIn.UefiBinary", "Add-In\Scan\ReviveThis.Net.AddIn.UefiBinary\ReviveThis.Net.AddIn.UefiBinary.csproj", "{7BB504E2-AD0F-409C-AD97-0A260A73A2F1}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReviveThis", "ReviveThis\ReviveThis.csproj", "{33244EA5-E79F-4700-930A-A6AF3A3CB58E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{621BE5BD-C626-4CE8-A80E-4942A711E116}"
@@ -64,6 +66,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReviveThis.Net.Tool.Uninsta
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Shared", "mui\1.0\FirstFloor.ModernUI\Shared\Shared.shproj", "{EEDA74FC-CA5A-4C06-9654-2600B74E2D1D}"
 EndProject
+
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		mui\1.0\FirstFloor.ModernUI\Shared\Shared.projitems*{eeda74fc-ca5a-4c06-9654-2600b74e2d1d}*SharedItemsImports = 13
@@ -337,6 +340,18 @@ Global
 		{E8F8A263-B3E5-4C10-9283-73A874142701}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{E8F8A263-B3E5-4C10-9283-73A874142701}.Release|x64.ActiveCfg = Release|Any CPU
 		{E8F8A263-B3E5-4C10-9283-73A874142701}.Release|x86.ActiveCfg = Release|Any CPU
+		{7BB504E2-AD0F-409C-AD97-0A260A73A2F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BB504E2-AD0F-409C-AD97-0A260A73A2F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BB504E2-AD0F-409C-AD97-0A260A73A2F1}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{7BB504E2-AD0F-409C-AD97-0A260A73A2F1}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{7BB504E2-AD0F-409C-AD97-0A260A73A2F1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7BB504E2-AD0F-409C-AD97-0A260A73A2F1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7BB504E2-AD0F-409C-AD97-0A260A73A2F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BB504E2-AD0F-409C-AD97-0A260A73A2F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BB504E2-AD0F-409C-AD97-0A260A73A2F1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{7BB504E2-AD0F-409C-AD97-0A260A73A2F1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{7BB504E2-AD0F-409C-AD97-0A260A73A2F1}.Release|x64.ActiveCfg = Release|Any CPU
+		{7BB504E2-AD0F-409C-AD97-0A260A73A2F1}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -361,5 +376,6 @@ Global
 		{C4962448-57E3-40C4-BB33-E25CC3E73850} = {73169C90-438E-4E13-87E3-94352EB3E67C}
 		{E8F8A263-B3E5-4C10-9283-73A874142701} = {73169C90-438E-4E13-87E3-94352EB3E67C}
 		{EEDA74FC-CA5A-4C06-9654-2600B74E2D1D} = {2E784D6A-A97A-44F2-9E9C-E017F9BBDFA0}
+		{7BB504E2-AD0F-409C-AD97-0A260A73A2F1} = {A0FA59C7-16B5-4DCA-9B4E-561384660AEA}
 	EndGlobalSection
 EndGlobal
