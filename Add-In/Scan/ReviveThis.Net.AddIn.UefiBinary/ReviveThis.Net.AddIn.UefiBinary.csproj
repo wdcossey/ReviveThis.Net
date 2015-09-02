@@ -40,8 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\UefiBinaryResult.cs" />
-    <Compile Include="UefiBinary.cs" />
+    <Compile Include="LenovoServiceEngine\Entities\LenovoServiceEngineResult.cs" />
+    <Compile Include="LenovoServiceEngine\Enums\LenovoServiceEngineTypes.cs" />
+    <Compile Include="LenovoServiceEngine\LenovoServiceEngine.cs" />
+    <Compile Include="UefiBinary\Entities\UefiBinaryResult.cs" />
+    <Compile Include="UefiBinary\UefiBinary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

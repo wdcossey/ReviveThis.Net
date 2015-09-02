@@ -1,12 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Threading.Tasks;
-using ReviveThis.Entities;
+﻿using System.Threading.Tasks;
 using ReviveThis.Enums;
 using ReviveThis.Interfaces;
 using ReviveThis.Structs;
 
-namespace ReviveThis.AddIn.UefiBinary.Entities
+namespace ReviveThis.AddIn.UefiBinary.UefiBinary.Entities
 {
   public class UefiBinaryResult : IDetectionResultItem, ICustomAddInSection
   {

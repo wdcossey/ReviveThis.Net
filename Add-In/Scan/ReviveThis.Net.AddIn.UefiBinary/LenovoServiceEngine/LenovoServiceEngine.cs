@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel.Composition;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using ReviveThis.AddIn.UefiBinary.Entities;
-using ReviveThis.Entities;
+using ReviveThis.AddIn.UefiBinary.LenovoServiceEngine.Entities;
+using ReviveThis.AddIn.UefiBinary.LenovoServiceEngine.Enums;
 using ReviveThis.Enums;
 using ReviveThis.Interfaces;
 
-namespace ReviveThis.AddIn.UefiBinary
+namespace ReviveThis.AddIn.UefiBinary.LenovoServiceEngine
 {
   #region
   [Export(typeof(IDetectionAddIn))]
-  public class UefiBinary : IDetectionAddIn
+  public class LenovoServiceEngine : IDetectionAddIn
   {
     public string Author
     {
@@ -37,7 +36,7 @@ namespace ReviveThis.AddIn.UefiBinary
 
     public string Name
     {
-      get { return @"UEFI Binary Loaders"; }
+      get { return @"Lenovo Service Engine (LSE)"; }
     }
 
     private string[] _description = new string[0];
@@ -51,26 +50,33 @@ namespace ReviveThis.AddIn.UefiBinary
 
         return
           _description =
-            new[] { "Scans the system event log for UEFI Binary Loaders (Microsoft Windows Platform Binary Table)." };
+            new[] { String.Format("Scans \"{0}\" for Lenovo Service Engine (LSE) file(s).", Environment.GetFolderPath(Environment.SpecialFolder.System)) };
       }
     }
 
     public async Task<ICollection<IDetectionResultItem>> Scan()
     {
-      //EventLog.CreateEventSource("Microsoft-Windows-Subsys-SMSS", "MyNewLog");
-      //EventLog myLog = new EventLog("System", ".", "Microsoft-Windows-Subsys-SMSS");
-      //myLog.WriteEntry("A platform binary was successfully executed.");
+
 
       var result = new List<IDetectionResultItem>();
 
-      var eventLog = new EventLog("System", ".", "Microsoft-Windows-Subsys-SMSS");
+      var lseBinaryList =
+        Directory.EnumerateFiles(Environment.GetFolderPath(Environment.SpecialFolder.System), "*.exe", SearchOption.TopDirectoryOnly)
+          .Where(w => w.EndsWith("LSEDT.exe") || w.EndsWith("LSEPreDownloader.exe")).ToList();
 
-      foreach (EventLogEntry entry in eventLog.Entries.Cast<EventLogEntry>().Where(w => w.Source == "Microsoft-Windows-Subsys-SMSS"))
+      foreach (var fileName in lseBinaryList)
       {
-        //Console.WriteLine(entry.Message);
+        result.Add(new LenovoServiceEngineResult(LenovoServiceEngineTypes.Binary, fileName, fileName));
+      }
 
-        result.Add(new UefiBinaryResult(ScanResultType.CustomAddIn, entry.Message));
-        
+
+      var lseLogList = Directory.EnumerateFiles(Environment.GetFolderPath(Environment.SpecialFolder.Windows), "*.log", SearchOption.TopDirectoryOnly)
+          .Where(w => w.EndsWith("lseupload.log"));
+
+
+      foreach (var fileName in lseLogList)
+      {
+        result.Add(new LenovoServiceEngineResult(LenovoServiceEngineTypes.Log, fileName, fileName));
       }
 
 
