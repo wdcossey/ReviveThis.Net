@@ -32,7 +32,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LenovoServiceEngine\Entities\LenovoServiceEngineRepairResult.cs" />
     <Compile Include="LenovoServiceEngine\Entities\LenovoServiceEngineResult.cs" />
     <Compile Include="LenovoServiceEngine\Enums\LenovoServiceEngineTypes.cs" />
     <Compile Include="LenovoServiceEngine\LenovoServiceEngine.cs" />

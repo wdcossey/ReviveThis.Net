@@ -31,6 +31,8 @@ namespace ReviveThis.AddIn.InternetExplorer.Extension
     private const string RES_PREFIX = "res://";
     private const string FILE_PREFIX = "file://";
     private const string HTTP_PREFIX = "http://";
+    
+    //private const string REGEX_STRIPPER = "res\\:\\/\\/|file\\:\\/\\/|(?<FileName>.*?)";
 
     private const string NO_FILE = @"(no file)";
 
@@ -248,6 +250,8 @@ namespace ReviveThis.AddIn.InternetExplorer.Extension
                     sFile = sFile.Substring(FILE_PREFIX.Length, sFile.Length - FILE_PREFIX.Length);
                   }
 
+
+                  sFile = sFile.TrimStart('"').TrimEnd('"');
                   //if (!File.Exists(sFile))
                   //{
                   //  sFile += string.Format(" {0}", FILE_MISSING);

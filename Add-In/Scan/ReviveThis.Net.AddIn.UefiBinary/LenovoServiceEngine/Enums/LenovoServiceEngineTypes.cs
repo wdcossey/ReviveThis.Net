@@ -4,6 +4,7 @@
   {
     Binary,
     Log,
-    Directory
+    Directory,
+    Service
   }
 }
