@@ -72,6 +72,9 @@
     </ApplicationDefinition>
     <Compile Include="ContentLoaders\AboutContentLoader.cs" />
     <Compile Include="ContentLoaders\ToolsContentLoader.cs" />
+    <Compile Include="Content\ToolsDefault.xaml.cs">
+      <DependentUpon>ToolsDefault.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Content\AboutHiJackThis.xaml.cs">
       <DependentUpon>AboutHiJackThis.xaml</DependentUpon>
     </Compile>
@@ -119,6 +122,10 @@
     <Page Include="Assets\CustomStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Content\ToolsDefault.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Content\AboutHiJackThis.xaml">
       <Generator>MSBuild:Compile</Generator>

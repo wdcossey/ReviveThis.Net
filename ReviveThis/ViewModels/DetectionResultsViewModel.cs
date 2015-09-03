@@ -49,7 +49,16 @@ namespace ReviveThis.ViewModels
       {
         _items = value;
         OnPropertyChanged();
+        OnPropertyChanged(nameof(HaveResults));
       }
+    }
+    #endregion
+
+    #region HaveResults
+    // ReSharper disable once ConvertToAutoProperty
+    public bool HaveResults
+    {
+      get { return Items != null && Items.Count > 0; }
     }
     #endregion
 

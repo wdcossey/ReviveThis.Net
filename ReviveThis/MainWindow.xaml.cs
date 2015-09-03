@@ -15,7 +15,7 @@ namespace ReviveThis
     {
       InitializeComponent();
 
-      this.Title = string.Format("{0}{1}", "ReviveThis.Net", Elevation.IsElevated ? string.Format(" ({0})", @"Administrator") : string.Empty);
+      
     }
 
   }

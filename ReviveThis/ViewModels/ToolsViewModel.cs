@@ -16,6 +16,7 @@ namespace ReviveThis.ViewModels
   public class ToolsViewModel : INotifyPropertyChanged
   {
     private Uri _selectedLink;
+    
 
     #region Members
 
@@ -34,6 +35,21 @@ namespace ReviveThis.ViewModels
       }
     }
 
+    //#region DefaultContent
+    //private Uri _defaultContent;
+
+    //public Uri DefaultContent
+    //{
+    //  get { return _defaultContent; }
+    //  set
+    //  {
+    //    _defaultContent = value;
+    //    OnPropertyChanged();
+    //  }
+    //}
+    //#endregion
+
+
     public Uri SelectedLink
     {
       get
@@ -41,13 +57,13 @@ namespace ReviveThis.ViewModels
         if (_selectedLink != null)
           return _selectedLink;
 
-        var first = Links.FirstOrDefault();
+        //var first = Links.FirstOrDefault();
 
-        if (first == null) 
-          return null;
+        //if (first == null) 
+        //  return null;
 
-        _selectedLink = first.Source;
-        return _selectedLink;
+        //_selectedLink = first.Source;
+        return new Uri("/Content/ToolsDefault.xaml", UriKind.RelativeOrAbsolute); //_selectedLink;
       }
       set
       {

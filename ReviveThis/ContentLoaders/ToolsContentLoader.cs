@@ -12,12 +12,7 @@ namespace ReviveThis.ContentLoaders
         where c.Guid.ToString().Equals(uri.OriginalString, StringComparison.OrdinalIgnoreCase)
         select c.Content).FirstOrDefault();
 
-      if (content == null)
-      {
-        return base.LoadContent(uri);
-      }
-
-      return content;
+      return content ?? base.LoadContent(uri);
     }
   }
 }

@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Documents;
 using FirstFloor.ModernUI.Presentation;
 using ReviveThis.Entities;
+using ReviveThis.Helpers;
 
 namespace ReviveThis.ViewModels
 {
@@ -31,11 +32,11 @@ namespace ReviveThis.ViewModels
         DisplayName = "Scan",
       };
 
-      grpScan.Links.Add(new Link
-      {
-        DisplayName = "Selection",
-        Source = new Uri("/Pages/DetectionSelection.xaml", UriKind.RelativeOrAbsolute)
-      });
+      //grpScan.Links.Add(new Link
+      //{
+      //  DisplayName = "Selection",
+      //  Source = new Uri("/Pages/DetectionSelection.xaml", UriKind.RelativeOrAbsolute)
+      //});
 
       grpScan.Links.Add(new Link
       {
@@ -101,6 +102,14 @@ namespace ReviveThis.ViewModels
       {
         _menuCollection = value;
         OnPropertyChanged();
+      }
+    }
+
+    public string Title
+    {
+      get
+      {
+        return $"{"ReviveThis.Net"}{(Elevation.IsElevated ? $" ({@"Administrator"})" : string.Empty)}";
       }
     }
 

@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:viewModels="clr-namespace:ReviveThis.ViewModels"
+      xmlns:system="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
       d:DesignHeight="480" d:DesignWidth="640">
 
@@ -11,20 +12,105 @@
         <viewModels:DetectionResultsViewModel/>
     </UserControl.DataContext>
 
-    <Border Style="{StaticResource ContentRoot}" BorderBrush="{StaticResource ItemBorder}" BorderThickness="1">
-        <Grid >
+    <Grid Style="{StaticResource ContentRoot}">
+        
+        <Grid x:Name="SelectionGrid" MinWidth="300" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.Resources>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Visibility" Value="Visible"></Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding HaveResults, Mode=OneWay}" Value="True">
+                            <Setter Property="Visibility" Value="Hidden"></Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Resources>
+
+            <Grid.ColumnDefinitions>
+
+                <ColumnDefinition Width="*"></ColumnDefinition>
+
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Button Grid.Column="0"
+                    Grid.Row="0"
+                    Margin="4"
+                    Command="{Binding StartScan}"
+                    IsEnabled="False"
+                    Content="Do a system scan and save a logfile">
+                <Button.CommandParameter>
+                    <system:Boolean>True</system:Boolean>
+                </Button.CommandParameter>
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical" Margin="18">
+                            <Path Data="{StaticResource SearchFilePath}" 
+                                  Height="40" 
+                                  Width="40" 
+                                  Margin="0 0 0 12"
+                                  HorizontalAlignment="Center" 
+                                  Stretch="Uniform" 
+                                  Fill="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}" />
+                            <ContentControl IsTabStop="False" TextBlock.TextAlignment="Center" Content="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Content, Mode=OneWay}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+
+            <Button
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    Margin="4"
+                    Command="{Binding StartScan}"
+                    Content="Do a system scan only">
+                <Button.CommandParameter>
+                    <system:Boolean>False</system:Boolean>
+                </Button.CommandParameter>
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical" Margin="18">
+                            <Path Data="{StaticResource SearchPath}" 
+                                  Height="40" 
+                                  Width="40" 
+                                  Margin="0 0 0 12"
+                                  HorizontalAlignment="Center" 
+                                  Stretch="Uniform" 
+                                  Fill="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}" />
+                            <ContentControl IsTabStop="False" TextBlock.TextAlignment="Center" Content="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Content, Mode=OneWay}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+        </Grid>
+        <Grid x:Name="ResultsGrid" >
+            <Grid.Resources>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Visibility" Value="Hidden"></Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding HaveResults, Mode=OneWay}" Value="True">
+                            <Setter Property="Visibility" Value="Visible"></Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Resources>
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <ListView 
-                x:Name="ResultsListView" 
-                Grid.Row="0" 
-                VerticalAlignment="Stretch"  
-                HorizontalAlignment="Stretch" 
-                
-                ItemsSource="{Binding Items}" 
-                SelectedItem="{Binding SelectedItem, Mode=TwoWay}" >
-                
+
+            <Border Margin="0" Grid.Row="0"  Padding="0" BorderBrush="{StaticResource ItemBorder}" BorderThickness="1" >
+                <ListView 
+                    x:Name="ResultsListView" 
+                    Grid.Row="0" 
+                    VerticalAlignment="Stretch"  
+                    HorizontalAlignment="Stretch" 
+                    ItemsSource="{Binding Items}" 
+                    SelectedItem="{Binding SelectedItem, Mode=TwoWay}" >
+
                 <ListView.View>
                     <GridView AllowsColumnReorder="False">
                         <GridView.ColumnHeaderContainerStyle>
@@ -41,23 +127,23 @@
                         </GridViewColumn>
                         <GridViewColumn Header="Results" Width="Auto" DisplayMemberBinding="{Binding LegacyString, Mode=OneWay}"/>
                         <!--<GridViewColumn Header="" Width="Auto" DisplayMemberBinding="{Binding Version, Mode=OneWay}"/>
-                        <GridViewColumn Header="Information" Width="Auto" DisplayMemberBinding="{Binding Author, Mode=OneWay}"/>-->
+                            <GridViewColumn Header="Information" Width="Auto" DisplayMemberBinding="{Binding Author, Mode=OneWay}"/>-->
                     </GridView>
                 </ListView.View>
 
                 <!--<ListView.ContextMenu  >
-                    <ContextMenu HasDropShadow="True" ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListView}, Converter={StaticResource ContextMenuConverter}}" >
+                        <ContextMenu HasDropShadow="True" ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListView}, Converter={StaticResource ContextMenuConverter}}" >
 
-                    </ContextMenu>
-                </ListView.ContextMenu>-->
+                        </ContextMenu>
+                    </ListView.ContextMenu>-->
 
-                
+
                 <ListView.Resources>
 
                     <ContextMenu
-                        x:Key="ResultContextMenu" 
-                        HasDropShadow="True"
-                        ItemsSource="{Binding Converter={StaticResource ContextMenuConverter}}">
+                            x:Key="ResultContextMenu" 
+                            HasDropShadow="True"
+                            ItemsSource="{Binding Converter={StaticResource ContextMenuConverter}}">
                         <ContextMenu.Resources>
                             <Style TargetType="{x:Type ContextMenu}" BasedOn="{StaticResource {x:Type ContextMenu}}" >
                                 <Setter Property="Visibility" Value="Visible"></Setter>
@@ -65,22 +151,22 @@
                                 <Style.Triggers>
                                     <Trigger Property="ItemsSource" Value="{x:Null}">
                                         <Setter Property="Visibility" Value="Collapsed" ></Setter>
-                                        
+
                                     </Trigger>
                                 </Style.Triggers>
                             </Style>
                         </ContextMenu.Resources>
                     </ContextMenu>
-                    
+
                     <Style TargetType="{x:Type TextBlock}">
                         <Setter Property="ToolTip" Value="{Binding Converter={StaticResource ScanResultToolTipConverter}}"></Setter>
                         <Setter Property="ContextMenu" Value="{StaticResource ResultContextMenu}"/>
                         <!--<Setter Property="ContextMenu.Placement" Value="MousePoint"/>
-                        <Setter Property="ContextMenu.HasDropShadow" Value="True"/>-->
+                            <Setter Property="ContextMenu.HasDropShadow" Value="True"/>-->
                     </Style>
-                    
+
                 </ListView.Resources>
-                
+
                 <ListView.GroupStyle>
                     <GroupStyle>
                         <GroupStyle.HeaderTemplate>
@@ -91,6 +177,7 @@
                     </GroupStyle>
                 </ListView.GroupStyle>
             </ListView>
+            </Border>
         </Grid>
-    </Border>
+    </Grid>
 </UserControl>

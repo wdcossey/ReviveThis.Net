@@ -8,9 +8,9 @@
     IsTitleVisible="True"
     AllowsTransparency="True"
     WindowStyle="None" 
-    Title="ReviveThis.Net" 
+    Title="{Binding Title}" 
     Height="600" Width="800"
-    ContentSource="/Pages/DetectionSelection.xaml" 
+    ContentSource="/Pages/DetectionResults.xaml" 
     WindowStartupLocation="CenterScreen" 
     ResizeMode="CanResizeWithGrip"
     MenuLinkGroups="{Binding MenuCollection}">
