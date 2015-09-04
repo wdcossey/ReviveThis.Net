@@ -86,6 +86,11 @@ namespace ReviveThis.AddIn.InternetExplorer.DownloadedProgramFiles.Entities
       get { return false; }
     }
 
+    public bool IsChecked
+    {
+      get { return false; }
+    }
+
     public async Task<IDetectionRepairResult> Repair()
     {
       //await Task.FromResult(0);

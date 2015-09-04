@@ -40,6 +40,11 @@ namespace ReviveThis.AddIn.WinSock.Entities
       get { return false; }
     }
 
+    public bool IsChecked
+    {
+      get { return true; }
+    }
+
     public async Task<IDetectionRepairResult> Repair()
     {
       //await Task.FromResult(0);

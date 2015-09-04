@@ -102,7 +102,7 @@
                                     <Setter Property="Foreground" Value="{DynamicResource ModernButtonBorder}" />
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="True">
-                                    <Setter Property="Foreground" Value="#C33B2C" />
+                                    <Setter Property="Foreground" Value="{DynamicResource GmailBrush}" />
                                 </Trigger>
                             </Style.Triggers>
                         </Style>

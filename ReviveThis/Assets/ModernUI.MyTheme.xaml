@@ -10,6 +10,9 @@
     <!-- specify the accent color (optional) -->
     <Color x:Key="AccentColor">DodgerBlue</Color>
     <SolidColorBrush x:Key="AccentBrush" Color="{DynamicResource AccentColor}"/>
+
+    <Color x:Key="GmailColor">#C33B2C</Color>
+    <SolidColorBrush x:Key="GmailBrush" Color="{DynamicResource GmailColor}"/>
     
     <!--<SolidColorBrush x:Key="SubMenuTextSelected" Color="{DynamicResource AccentColor}"/>-->
     

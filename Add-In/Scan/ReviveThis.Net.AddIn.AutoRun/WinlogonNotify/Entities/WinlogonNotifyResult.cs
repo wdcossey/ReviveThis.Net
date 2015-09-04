@@ -77,6 +77,11 @@ namespace ReviveThis.AddIn.AutoRun.WinlogonNotify.Entities
       get { return false; }
     }
 
+    public bool IsChecked
+    {
+      get { return false; }
+    }
+
     public async Task<IDetectionRepairResult> Repair()
     {
       //await Task.FromResult(0);

@@ -80,6 +80,11 @@ namespace ReviveThis.AddIn.ControlPanel.Entities
       get { return false; }
     }
 
+    public bool IsChecked
+    {
+      get { return false; }
+    }
+
     public async Task<IDetectionRepairResult> Repair()
     {
       //await Task.FromResult(0);

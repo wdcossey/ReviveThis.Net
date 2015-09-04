@@ -60,6 +60,12 @@ Namespace Classes
 
         Public ReadOnly Property CanRepair() As Boolean Implements IDetectionRepair.CanRepair
             Get
+                Return True
+            End Get
+        End Property
+
+        Public ReadOnly Property IsChecked() As Boolean Implements IDetectionRepair.IsChecked
+            Get
                 Return False
             End Get
         End Property

@@ -12,9 +12,13 @@
         <viewModels:DetectionResultsViewModel/>
     </UserControl.DataContext>
 
+    <UserControl.Resources>
+        <system:Double x:Key="ButtonPathHeight">24</system:Double>
+    </UserControl.Resources>
+    
     <Grid Style="{StaticResource ContentRoot}">
         
-        <Grid x:Name="SelectionGrid" MinWidth="300" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid x:Name="SelectionGrid" MinWidth="300" HorizontalAlignment="Center" VerticalAlignment="Top">
             <Grid.Resources>
                 <Style TargetType="{x:Type Grid}">
                     <Setter Property="Visibility" Value="Visible"></Setter>
@@ -47,11 +51,11 @@
                 </Button.CommandParameter>
                 <Button.ContentTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Vertical" Margin="18">
+                        <StackPanel Orientation="Horizontal" Margin="18" VerticalAlignment="Center">
                             <Path Data="{StaticResource SearchFilePath}" 
-                                  Height="40" 
-                                  Width="40" 
-                                  Margin="0 0 0 12"
+                                  Height="{StaticResource ButtonPathHeight}" 
+                                  Width="{StaticResource ButtonPathHeight}" 
+                                  Margin="0 0 12 0"
                                   HorizontalAlignment="Center" 
                                   Stretch="Uniform" 
                                   Fill="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}" />
@@ -72,11 +76,11 @@
                 </Button.CommandParameter>
                 <Button.ContentTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Vertical" Margin="18">
+                        <StackPanel Orientation="Horizontal" Margin="18" VerticalAlignment="Center">
                             <Path Data="{StaticResource SearchPath}" 
-                                  Height="40" 
-                                  Width="40" 
-                                  Margin="0 0 0 12"
+                                  Height="{StaticResource ButtonPathHeight}" 
+                                  Width="{StaticResource ButtonPathHeight}" 
+                                  Margin="0 0 12 0 "
                                   HorizontalAlignment="Center" 
                                   Stretch="Uniform" 
                                   Fill="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}" />
@@ -121,7 +125,41 @@
                         <GridViewColumn>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <CheckBox IsEnabled="{Binding CanRepair, Mode=OneWay}" IsChecked="{Binding CanRepair, Mode=OneWay}" Tag="{Binding}"/>
+                                        <CheckBox Tag="{Binding}">
+                                            <CheckBox.Resources>
+                                                <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
+                                                    <Setter Property="IsEnabled" Value="False" />
+                                                    <Setter Property="IsChecked" Value="False" />
+                                                    <Setter Property="Visibility" Value="Hidden" />
+                                                    
+                                                    <Style.Triggers>
+                                                        <MultiDataTrigger>
+                                                            <MultiDataTrigger.Conditions>
+                                                                <Condition Binding="{Binding CanRepair, Mode=OneWay}" Value="True" />
+                                                                <Condition Binding="{Binding IsChecked, Mode=OneWay}" Value="True" />
+                                                            </MultiDataTrigger.Conditions>
+                                                            <Setter Property="IsEnabled" Value="True" />
+                                                            <Setter Property="IsChecked" Value="True" />
+                                                            <Setter Property="Visibility" Value="Visible" />
+                                                        </MultiDataTrigger>
+                                                        
+                                                        <MultiDataTrigger>
+                                                            <MultiDataTrigger.Conditions>
+                                                                <Condition Binding="{Binding CanRepair, Mode=OneWay}" Value="True" />
+                                                                <Condition Binding="{Binding IsChecked, Mode=OneWay}" Value="False" />
+                                                            </MultiDataTrigger.Conditions>
+                                                            <Setter Property="IsEnabled" Value="True" />
+                                                            <Setter Property="IsChecked" Value="False" />
+                                                            <Setter Property="Visibility" Value="Visible" />
+                                                        </MultiDataTrigger>
+                                                        
+
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </CheckBox.Resources>
+                                            
+                                        </CheckBox>
+                                    
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>

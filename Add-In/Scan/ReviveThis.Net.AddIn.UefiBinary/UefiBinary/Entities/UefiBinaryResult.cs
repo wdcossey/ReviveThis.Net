@@ -37,6 +37,11 @@ namespace ReviveThis.AddIn.UefiBinary.UefiBinary.Entities
       get { return false; }
     }
 
+    public bool IsChecked
+    {
+      get { return true; }
+    }
+
     public Task<IDetectionRepairResult> Repair()
     {
       return null;

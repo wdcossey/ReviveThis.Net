@@ -59,6 +59,11 @@ namespace ReviveThis.Sample.CSharp.Classes
       get { return true; }
     }
 
+    public bool IsChecked
+    {
+      get { return true; }
+    }
+
     public async Task<IDetectionRepairResult> Repair()
     {
       //await Task.FromResult(0);

@@ -57,6 +57,11 @@ namespace ReviveThis.AddIn.UefiBinary.LenovoServiceEngine.Entities
       get { return true; }
     }
 
+    public bool IsChecked
+    {
+      get { return true; }
+    }
+
     public async Task<IDetectionRepairResult> Repair()
     {
       try
